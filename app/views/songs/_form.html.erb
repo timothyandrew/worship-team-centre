@@ -1,0 +1,12 @@
+<%= form_for song do |f| %>
+  <%= f.label "Song name: "  %>
+  <%= f.text_field :name %>
+
+  <%= f.label "Lyrics: " %>
+  <%= f.text_area :lyrics %>
+
+  <%= f.label "In the key of: " %>
+  <%= f.select :key, Song::KEYS %>
+
+  <%= f.submit %>
+<% end %>

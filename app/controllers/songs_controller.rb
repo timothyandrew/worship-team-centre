@@ -10,6 +10,7 @@ class SongsController < ApplicationController
       redirect_to song_path(song)
     else
       flash[:error] = "There was an error saving this song. Please review"
+      @song = song
       render :new
     end
   end
@@ -25,6 +26,7 @@ class SongsController < ApplicationController
       redirect_to song_path(song)
     else
       flash[:error] = "There was an error saving your song."
+      @song = song
       render :edit
     end
   end

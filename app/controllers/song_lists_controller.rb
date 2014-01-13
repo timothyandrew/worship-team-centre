@@ -30,7 +30,7 @@ class SongListsController < ApplicationController
   end
 
   def index
-    @song_lists = SongList.order(:done_on)
+    @song_lists = SongList.order("done_on DESC")
   end
 
   def show

@@ -1,12 +1,1 @@
-<%= form_for @song do |f| %>
-  <%= f.label "Song name: "  %>
-  <%= f.text_field :name %>
-
-  <%= f.label "Lyrics: " %>
-  <%= f.text_area :lyrics %>
-
-  <%= f.label "In the key of: " %>
-  <%= f.text_field :key %>
-
-  <%= f.submit %>
-<% end %>
+<%= render partial: "songs/form", locals: { song: @song } %>
