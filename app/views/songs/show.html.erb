@@ -1,3 +1,9 @@
 <h1><%= @song.name %></h1>
 
+<% if @song.key.present? %>
+  <h2>Sung in <%= @song.key %></h2>
+<% end %>
+
+<%= link_to "Edit", edit_song_path(@song), class: "btn" %>
+
 <p><%= simple_format @song.lyrics %></p>
