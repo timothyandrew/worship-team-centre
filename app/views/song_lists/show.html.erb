@@ -1,7 +1,6 @@
-<h2>This song list was done on <%= @song_list.done_on %></h2>
-<%= link_to "Edit", edit_song_list_path(@song_list), class: "btn" %>
+<h2>Song List for <%= l(@song_list.done_on, format: :long) %> – <%= @song_list.service %> Service</h2>
+<%= link_to "Edit", edit_song_list_path(@song_list), class: "btn btn-info" %>
 
-<h4>Theme: <%= @song_list.theme %></h4>
-<h4>Service: <%= @song_list.service %></h4>
+<h4 class='song-list-theme'>Theme: <%= @song_list.theme %></h4>
 
 <%= render partial: "songs_in_list", locals: { song_list: @song_list } %>
