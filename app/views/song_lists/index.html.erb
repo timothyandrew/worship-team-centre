@@ -6,7 +6,7 @@
 			<th>Songs</th>
 			<th>Done On</th>
 			<th>Theme</th>
-			<th>M/E</th>
+			<th>Services</th>
 			<th>Actions</th>
 		</tr>
     <% @song_lists.each do |song_list| %>
@@ -22,7 +22,7 @@
     		</td>
         	<td><%= l(song_list.done_on, format: :long) %></td>
         	<td><%= song_list.theme %></td>
-        	<td>Morning</td>
+        	<td><%= song_list.service %></td>
         	<td><%= link_to "Edit", edit_song_list_path(song_list), class: "btn" %></td>
         </tr>
     <% end %>
