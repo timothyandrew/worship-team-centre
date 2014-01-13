@@ -1,7 +1,7 @@
 <ol>
 <% song_list.songs.each do |song| %>
   <li>
-    <%= song.name %>
+    <%= link_to song.name, song_path(song) %>
   </li>
 <% end %>
 </ol>
