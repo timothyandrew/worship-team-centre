@@ -21,7 +21,7 @@
     			</ul>
     		</td>
         	<td><%= l(song_list.done_on, format: :long) %></td>
-        	<td>God</td>
+        	<td><%= song_list.theme %></td>
         	<td>Morning</td>
         	<td><%= link_to "Edit", edit_song_list_path(song_list), class: "btn" %></td>
         </tr>

@@ -12,16 +12,16 @@ class window.WorshipTeamCenter.SongList
 
     @index = @index + 1
 
-    song_list_item_element = $("<div class='song_list_item' data-song-id='#{selected_option}'></div>")
+    song_list_item_element = $("<li class='song_list_item' data-song-id='#{selected_option}'></li>")
     remove_song_element = "<a class='remove-song-action' href='javascript:void(0);' data-song-id='#{selected_option}' data-song-name='#{selected_song_name}'>Remove</a>"
-    label_element = "<label for='song_list_song_list_items_attributes_#{@index}_Song Name: #{selected_song_name}'>Song name: #{selected_song_name}</label>"
+    label_element = "<label class='song-label' for='song_list_song_list_items_attributes_#{@index}_Song Name: #{selected_song_name}'>#{selected_song_name}</label>"
     hidden_element = "<input id='song_list_song_list_items_attributes_#{@index}_song_id' name='song_list[song_list_items_attributes][#{@index}][song_id]' type='hidden' value='#{selected_option}'>"
 
     song_list_item_element.append(label_element)
     song_list_item_element.append(hidden_element)
     song_list_item_element.append(remove_song_element)
 
-    form.append(song_list_item_element)
+    $("#song-list").append(song_list_item_element)
 
     @rebind()
 

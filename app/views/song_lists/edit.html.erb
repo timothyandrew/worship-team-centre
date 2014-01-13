@@ -1,19 +1,24 @@
 <%= form_for @song_list do |f| %>
+    <%= f.submit %>
     <%= f.label "This song list was done on: " %>
     <%= f.text_field :done_on %>
+
+    <%= f.label "Theme: " %>
+    <%= f.text_field :theme %>
 
     <% if @song_list.song_list_items.present? %>
         <%= f.label "Songs in this list: " %>
     <% end %>
+    <ul id='song-list'>
     <%= f.fields_for :song_list_items do |songs_form| %>
-        <div class="song_list_item" data-song-id="<%= songs_form.object.song.id %>">
-            <%= songs_form.label "Song Name: #{songs_form.object.song.name}" %>
+        <li class="song_list_item" data-song-id="<%= songs_form.object.song.id %>">
+            <%= songs_form.label "#{songs_form.object.song.name}", class: "song-label" %>
             <%= songs_form.hidden_field :song_id %>
             <%= link_to "Remove", "javascript:void(0);", class: "remove-song-action", data: { song_id: songs_form.object.song.id, song_name: songs_form.object.song.name } %>
-        </div>
+        </li>
     <% end %>
+    </ul>
 
-    <%= f.submit %>
 <% end %>
 
 <h2>Add songs to this list</h2>
