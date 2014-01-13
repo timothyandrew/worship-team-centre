@@ -33,6 +33,10 @@ class SongListsController < ApplicationController
     @song_lists = SongList.order(:done_on)
   end
 
+  def show
+    @song_list = SongList.find(params[:id])
+  end
+
   private
 
   def song_list_params
