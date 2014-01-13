@@ -9,7 +9,7 @@
   <% @songs.each do |song| %>
   <tr>
     <td><%= link_to song.name, song_path(song) %></td>
-    <td><%= simple_format song.lyrics %></td>
+    <td><%= simple_format(truncate(song.lyrics, length: 100, separator: "\n")) %></td>
     <td><%= song.key %></td>
     <td><%=  time_ago_in_words(song.created_at) %> ago</td>
   </tr>

@@ -1,9 +1,30 @@
 <% if @song_lists.empty? %>
   <h1>You haven't added any song lists yet. <%= link_to "Create a Song List", new_song_list_path %></h1>
 <% else %>
+	<table class="table table-striped table-hover">
+		<tr>
+			<th>Songs</th>
+			<th>Done On</th>
+			<th>Theme</th>
+			<th>M/E</th>
+			<th>Actions</th>
+		</tr>
     <% @song_lists.each do |song_list| %>
-        <h2>List #<%= song_list.id %> was done on <%= song_list.done_on %></h2>
-        <%= link_to "Edit", edit_song_list_path(song_list), class: "btn" %>
-      <%= render partial: "songs_in_list", locals: { song_list: song_list } %>
+    	<tr>
+    		<td>
+    			<ul>
+    				<% song_list.songs.each do |song| %>
+    					<li>
+    					 	<%= link_to song.name, song_path(song) %>
+    					</li>
+    				<% end %>
+    			</ul>
+    		</td>
+        	<td><%= l(song_list.done_on, format: :long) %></td>
+        	<td>God</td>
+        	<td>Morning</td>
+        	<td><%= link_to "Edit", edit_song_list_path(song_list), class: "btn" %></td>
+        </tr>
     <% end %>
+    </table>
 <% end %>
