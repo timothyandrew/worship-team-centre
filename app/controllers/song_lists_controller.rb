@@ -4,7 +4,7 @@ class SongListsController < ApplicationController
   end
 
   def create
-    song_list = SongList.new(params[:song_list])
+    song_list = SongList.new(song_list_params)
     if song_list.save
       flash[:notice] = "Your song list was successfully created."
       redirect_to song_list_path(song_list)
@@ -31,5 +31,11 @@ class SongListsController < ApplicationController
 
   def index
     @song_lists = SongList.order(:done_on)
+  end
+
+  private
+
+  def song_list_params
+    params.require(:song_list).permit!
   end
 end

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113053417) do
+ActiveRecord::Schema.define(version: 20140113071133) do
+
+  create_table "song_list_items", force: true do |t|
+    t.integer  "song_list_id"
+    t.integer  "song_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "song_list_items", ["song_id"], name: "index_song_list_items_on_song_id", using: :btree
+  add_index "song_list_items", ["song_list_id"], name: "index_song_list_items_on_song_list_id", using: :btree
 
   create_table "song_lists", force: true do |t|
     t.date     "done_on"
@@ -22,7 +32,6 @@ ActiveRecord::Schema.define(version: 20140113053417) do
   create_table "songs", force: true do |t|
     t.string   "name"
     t.string   "lyrics"
-    t.integer  "song_list_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
