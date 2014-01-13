@@ -9,6 +9,7 @@ $tableBackground: #fff;
 @import "bootstrap";
 @import "datepicker";
 @import "song_lists";
+@import "songs";
 
 .container {
 	width: 60%;
@@ -20,4 +21,11 @@ $tableBackground: #fff;
 .table-container {
 	width: 80%;
 	padding: 0;
+}
+
+.alert {
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	text-align: center;
 }

@@ -8,5 +8,7 @@
   <%= f.label "In the key of: " %>
   <%= f.select :key, Song::KEYS %>
 
-  <%= f.submit %>
+  <div>
+  	<%= f.submit "Save Song", class: "btn btn-info btn-large", id: "save-song-action" %>
+  </div>
 <% end %>
