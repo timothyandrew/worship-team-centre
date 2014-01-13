@@ -1,19 +1,15 @@
-<h1><%= @song.name %></h1>
+<h1><%= @song.name_with_key %></h1>
 
-<% if @song.key.present? %>
-  <h2>Sung in <%= @song.key %></h2>
-<% end %>
-
-<%= link_to "Edit", edit_song_path(@song), class: "btn" %>
+<%= link_to "Edit", edit_song_path(@song), class: "btn btn-info" %>
 
 <p><%= simple_format @song.lyrics %></p>
 
 <h3><%= @song.name %> was last done on:<h3>
 
-<ul>
+<ul class="song-done-on">
 <% @song.song_lists.order("done_on DESC").each do |song_list| %>
-	<li>
-	<%= link_to l(song_list.done_on, format: :long), song_list_path(song_list) %>
+	<li class="song-done-on-item">
+	  <%= link_to l(song_list.done_on, format: :long), song_list_path(song_list) %>
 	</li>
 <% end %>
 </ul>
