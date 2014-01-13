@@ -7,3 +7,13 @@
 <%= link_to "Edit", edit_song_path(@song), class: "btn" %>
 
 <p><%= simple_format @song.lyrics %></p>
+
+<h3><%= @song.name %> was last done on:<h3>
+
+<ul>
+<% @song.song_lists.order("done_on DESC").each do |song_list| %>
+	<li>
+	<%= link_to l(song_list.done_on, format: :long), song_list_path(song_list) %>
+	</li>
+<% end %>
+</ul>
