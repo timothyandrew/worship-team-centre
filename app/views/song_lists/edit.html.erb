@@ -1,2 +1,22 @@
-<h1>SongLists#edit</h1>
-<p>Find me in app/views/song_lists/edit.html.erb</p>
+<%= form_for @song_list do |f| %>
+    <%= f.label "This song list was done on: " %>
+    <%= f.text_field :done_on %>
+
+    <% if @song_list.song_list_items.present? %>
+        <%= f.label "Songs in this list: " %>
+    <% end %>
+    <%= f.fields_for :song_list_items do |songs_form| %>
+        <%= songs_form.label "Song Name: #{songs_form.object.song.name}" %>
+        <%= songs_form.hidden_field :song_id %>
+    <% end %>
+
+    <%= f.submit %>
+<% end %>
+
+<h2>Add songs to this list</h2>
+<%= select_tag "songs", options_from_collection_for_select((@song_list.songs_not_in_list), :id, :name), id: "add-new-song-select" %>
+<%= link_to "Add This Song", "javascript:void(0);", class: "btn", id: "add-new-song-action" %>
+
+<script type="text/javascript">
+    $("#add-new-song-action").click(new window.WorshipTeamCenter.SongList().add_new_song);
+</script>

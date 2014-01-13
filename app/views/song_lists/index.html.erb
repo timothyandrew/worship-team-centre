@@ -3,6 +3,7 @@
 <% else %>
     <% @song_lists.each do |song_list| %>
         <h2>List #<%= song_list.id %> was done on <%= song_list.done_on %></h2>
+        <%= link_to "Edit", edit_song_list_path(song_list), class: "btn" %>
       <%= render partial: "songs_in_list", locals: { song_list: song_list } %>
     <% end %>
 <% end %>

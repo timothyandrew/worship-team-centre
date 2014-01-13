@@ -20,7 +20,7 @@ class SongListsController < ApplicationController
 
   def update
     song_list = SongList.find(params[:id])
-    if song_list.update(params[:song_list])
+    if song_list.update(song_list_params)
       flash[:notice] = "Your song list was successfully updated."
       redirect_to song_list_path(song_list)
     else
