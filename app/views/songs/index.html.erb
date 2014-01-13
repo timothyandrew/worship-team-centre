@@ -1,9 +1,10 @@
-<table class="table table-striped table-hover table-responsive">
+<table class="table table-striped table-hover table-responsive table-bordered">
   <tr>
     <th>Song Name</th>
     <th>Lyrics</th>
     <th>Key</th>
     <th>Added On</th>
+    <th>Actions</th>
   </tr>
 
   <% @songs.each do |song| %>
@@ -12,6 +13,7 @@
     <td><%= simple_format(truncate(song.lyrics, length: 100, separator: "\n")) %></td>
     <td><%= song.key %></td>
     <td><%=  time_ago_in_words(song.created_at) %> ago</td>
+    <td><%= link_to "Edit", edit_song_path(song), class: "btn" %></td>
   </tr>
   <% end %>
 </table>
