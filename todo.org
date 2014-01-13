@@ -3,3 +3,4 @@
 * TODO Ordered list
 * TODO Remove songs from list
 * TODO Add new song
+* TODO Morning or Evening

@@ -8,7 +8,7 @@
   <% @songs.each do |song| %>
   <tr>
     <td><%= song.name %></td>
-    <td><%= song.lyrics %></td>
+    <td><%= simple_format song.lyrics %></td>
     <td><%=  time_ago_in_words(song.created_at) %> ago</td>
   </tr>
   <% end %>

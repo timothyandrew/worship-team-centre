@@ -4,7 +4,7 @@ class SongsController < ApplicationController
   end
 
   def create
-    song = Song.new(params[:song])
+    song = Song.new(song_params)
     if song.save
       flash[:notice] = "Your song was successfully created."
       redirect_to song_path(song)
@@ -20,7 +20,7 @@ class SongsController < ApplicationController
 
   def update
     song = Song.find(params[:id])
-    if song.update(params[:song])
+    if song.update(song_params)
       flash[:notice] = "Your song was successfully updated."
       redirect_to song_path(song)
     else
@@ -31,5 +31,15 @@ class SongsController < ApplicationController
 
   def index
     @songs = Song.order(:created_at)
+  end
+
+  def show
+    @song = Song.find(params[:id])
+  end
+
+  private
+
+  def song_params
+    params.require(:song).permit!
   end
 end
