@@ -8,6 +8,7 @@
   <%= f.fields_for :song_list_items do |songs_form| %>
     <%= songs_form.label "Song Name: #{songs_form.object.song.name}" %>
     <%= songs_form.hidden_field :song_id %>
+    <%= link_to "Remove", "javascript:void(0);", class: "remove-song-action", data: { song_id: songs_form.object.song.id, song_name: songs_form.object.song.name } %>
   <% end %>
 
   <%= f.submit %>
@@ -18,6 +19,8 @@
 <%= link_to "Add This Song", "javascript:void(0);", class: "btn", id: "add-new-song-action" %>
 
 <script type="text/javascript">
-    $("#add-new-song-action").click(new window.WorshipTeamCenter.SongList().add_new_song);
+    var songList = new window.WorshipTeamCenter.SongList();
+    $("#add-new-song-action").click(songList.add_new_song);
+    $(".remove-song-action").click(songList.remove_song);
     $("#song_list_done_on").datepicker({ format: "yyyy-mm-dd"});
 </script>
