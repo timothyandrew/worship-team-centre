@@ -11,6 +11,9 @@
     <% if song_list.song_list_items.present? %>
         <%= f.label "Songs in this list: " %>
     <% end %>
+    
+    <h3>Songs for this List</h3>
+
     <ul id='song-list'>
     <%= f.fields_for :song_list_items do |songs_form| %>
         <li class="song_list_item" data-song-id="<%= songs_form.object.song.id %>">
@@ -21,5 +24,10 @@
     <% end %>
     </ul>
 
-    <%= f.submit %>
+    <%= select_tag "songs", options_from_collection_for_select((@song_list.songs_not_in_list), :id, :name), id: "add-new-song-select" %>
+    <div>
+        <%= link_to "Add This Song", "javascript:void(0);", class: "btn btn-success", id: "add-new-song-action" %>
+    </div>
+
+    <%= f.submit "Save Song List", class: "btn btn-info btn-large", id: 'create-song-list-action' %>
 <% end %>

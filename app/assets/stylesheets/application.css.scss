@@ -9,3 +9,15 @@ $tableBackground: #fff;
 @import "bootstrap";
 @import "datepicker";
 @import "song_lists";
+
+.container {
+	width: 60%;
+	margin: 0 auto;
+	background-color: lightYellow;
+	padding: 20px;
+}
+
+.table-container {
+	width: 80%;
+	padding: 0;
+}

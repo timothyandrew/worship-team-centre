@@ -21,7 +21,9 @@
   </div>
 </div>
 
-<%= yield %>
+<div class="container <%= yield :container_class %>">
+  <%= yield %>
+</div>
 
 </body>
 </html>

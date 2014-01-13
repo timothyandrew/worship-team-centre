@@ -1,3 +1,7 @@
+<% content_for :container_class do  %>
+    table-container
+<% end %>
+
 <% if @song_lists.empty? %>
   <h1>You haven't added any song lists yet. <%= link_to "Create a Song List", new_song_list_path %></h1>
 <% else %>

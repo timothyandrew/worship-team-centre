@@ -1,8 +1,6 @@
-<%= render partial: "song_lists/form", locals: { song_list: @song_list } %>
+<h2>Add a new Song List</h2>
 
-<h2>Add songs to this list</h2>
-<%= select_tag "Foo", options_from_collection_for_select(Song.all, :id, :name), id: "add-new-song-select" %>
-<%= link_to "Add This Song", "javascript:void(0);", class: "btn", id: "add-new-song-action" %>
+<%= render partial: "song_lists/form", locals: { song_list: @song_list } %>
 
 <script type="text/javascript">
     var songList = new window.WorshipTeamCenter.SongList();
