@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113191528) do
+ActiveRecord::Schema.define(version: 20140114043021) do
 
   create_table "song_list_items", force: true do |t|
     t.integer  "song_list_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140113191528) do
     t.datetime "updated_at"
     t.string   "theme"
     t.string   "service"
+    t.date     "deleted_at"
   end
 
   create_table "songs", force: true do |t|

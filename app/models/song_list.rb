@@ -1,7 +1,10 @@
 class SongList < ActiveRecord::Base
-  has_many :song_list_items
+  include SoftDeletable
+
+  has_many :song_list_items, dependent: :destroy
   has_many :songs, through: :song_list_items
   accepts_nested_attributes_for :song_list_items
+
 
   SERVICES = %w(Morning Evening Other)
 

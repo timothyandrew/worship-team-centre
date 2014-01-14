@@ -10,7 +10,7 @@
 	<h3><%= @song.name %> was last done on:<h3>
 
 	<ul class="song-done-on">
-	<% @song.song_lists.order("done_on DESC").each do |song_list| %>
+	<% @song.song_lists.not_deleted.order("done_on DESC").each do |song_list| %>
 		<li class="song-done-on-item">
 		  <%= link_to "#{l(song_list.done_on, format: :long)} (#{song_list.service} Service)", song_list_path(song_list) %>
 		</li>
