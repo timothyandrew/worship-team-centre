@@ -23,7 +23,7 @@ class window.WorshipTeamCenter.SongList
 
     $("#song-list").append(song_list_item_element)
 
-    @rebind()
+    @bind_view()
 
   remove_song: (e) =>
     song_id = $(e.target).data('song-id')
@@ -36,6 +36,15 @@ class window.WorshipTeamCenter.SongList
       value: song_id
     }))
 
-  rebind: =>
+    @bind_view()
+
+  bind_view: =>
     $(".remove-song-action").unbind()
+    $("#add-new-song-action").unbind()
+
     $(".remove-song-action").click(@remove_song);
+    
+    if $("#add-new-song-select").children().size() == 0
+      $("#add-new-song-action").click(->)
+    else
+      $("#add-new-song-action").click(@add_new_song)

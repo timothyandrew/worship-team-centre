@@ -4,7 +4,6 @@
 
 <script type="text/javascript">
     var songList = new window.WorshipTeamCenter.SongList();
-    $("#add-new-song-action").click(songList.add_new_song);
-    $(".remove-song-action").click(songList.remove_song);
+    songList.bind_view();
     $("#song_list_done_on").datepicker({ format: "yyyy-mm-dd"});
 </script>

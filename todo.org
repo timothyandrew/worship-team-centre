@@ -1,7 +1,3 @@
 
 * TODO Sortable list
-* TODO Morning or Evening
 * Add Chosen
-* Themes
-* Error messages
-* Blank thing
