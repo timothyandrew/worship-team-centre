@@ -16,11 +16,11 @@ class SongsController < ApplicationController
   end
 
   def edit
-    @song = Song.find(params[:id])
+    @song = Song.not_deleted.find(params[:id])
   end
 
   def update
-    song = Song.find(params[:id])
+    song = Song.not_deleted.find(params[:id])
     if song.update(song_params)
       flash[:notice] = "Your song was successfully updated."
       redirect_to song_path(song)
@@ -32,11 +32,22 @@ class SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.order(:created_at)
+    @songs = Song.not_deleted.order(:created_at)
   end
 
   def show
-    @song = Song.find(params[:id])
+    @song = Song.not_deleted.find(params[:id])
+  end
+
+
+  def destroy
+    song = Song.not_deleted.find(params[:id])
+    if song.soft_delete
+      flash[:notice] = "The song was deleted."
+    else
+      flash[:error] = "There was an error deleting the song."      
+    end
+    redirect_to song_lists_path
   end
 
   private

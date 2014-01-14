@@ -17,7 +17,7 @@
     	<tr>
     		<td>
     			<ul>
-    				<% song_list.songs.each do |song| %>
+    				<% song_list.songs.not_deleted.each do |song| %>
     					<li>
     					 	<%= link_to song.name, song_path(song) %>
     					</li>

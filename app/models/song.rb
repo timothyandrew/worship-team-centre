@@ -1,7 +1,9 @@
 # encoding: utf-8
 
 class Song < ActiveRecord::Base
-  has_many :song_list_items
+  include SoftDeletable
+
+  has_many :song_list_items, dependent: :destroy
   has_many :song_lists, through: :song_list_items
 
   KEYS = %w(C C♯ D E♭ E F F♯ G A♭ A B♭ B)
