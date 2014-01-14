@@ -11,7 +11,7 @@ class SongList < ActiveRecord::Base
   validates_inclusion_of :service, in: SERVICES
 
   def songs_not_in_list
-    Song.all - songs
+    Song.not_deleted.all - songs.not_deleted
   end
 
   def update_clearing_song_list_items(params)
