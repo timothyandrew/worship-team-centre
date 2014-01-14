@@ -8,7 +8,6 @@ module SoftDeletable
   end
 
   def soft_delete
-    self.deleted_at = Time.now
-    save
+    self.update_column(:deleted_at, Time.now)
   end
 end
