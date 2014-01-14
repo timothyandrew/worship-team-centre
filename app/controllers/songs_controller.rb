@@ -42,7 +42,7 @@ class SongsController < ApplicationController
 
   def destroy
     song = Song.not_deleted.find(params[:id])
-    if song.song_lists.present?
+    if song.song_lists.not_deleted.present?
       flash[:error] = "That song is belongs to more than one worship set. It can't be deleted."
     elsif song.soft_delete
       flash[:notice] = "The song was deleted."
