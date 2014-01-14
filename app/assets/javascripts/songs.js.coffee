@@ -1,3 +1,17 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+window.WorshipTeamCenter ||= {}
+
+class window.WorshipTeamCenter.Song
+  constructor: (@element) ->
+  	this
+
+  matches: (searchTerm) =>
+  	@name().match(new RegExp(searchTerm, "i"))
+
+  name: =>
+  	$(@element).find(".song-name").text()
+
+  show: =>
+  	$(@element).show()
+
+  hide: =>
+  	$(@element).hide()

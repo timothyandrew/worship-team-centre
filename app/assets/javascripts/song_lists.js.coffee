@@ -1,4 +1,4 @@
-window.WorshipTeamCenter = {}
+window.WorshipTeamCenter ||= {}
 
 class window.WorshipTeamCenter.SongList
   constructor: ->
