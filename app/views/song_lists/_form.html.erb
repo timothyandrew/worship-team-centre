@@ -1,5 +1,5 @@
 <%= form_for song_list do |f| %>    
-    <%= f.label "This song list was done on: " %>
+    <%= f.label "This worship set was done on: " %>
     <%= f.text_field :done_on %>
 
     <%= f.label "Theme: " %>
@@ -9,10 +9,9 @@
     <%= f.select :service, SongList::SERVICES %>
 
     <% if song_list.song_list_items.present? %>
-        <%= f.label "Songs in this list: " %>
+        <h3>Songs in this Set</h3>
     <% end %>
     
-    <h3>Songs for this List</h3>
 
     <ul id='song-list'>
     <%= f.fields_for :song_list_items do |songs_form| %>
@@ -29,5 +28,5 @@
         <%= link_to "Add This Song", "javascript:void(0);", class: "btn btn-success", id: "add-new-song-action" %>
     </div>
 
-    <%= f.submit "Save Song List", class: "btn btn-info btn-large", id: 'create-song-list-action' %>
+    <%= f.submit "Save Worship Set", class: "btn btn-info btn-large", id: 'create-song-list-action' %>
 <% end %>

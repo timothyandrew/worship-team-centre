@@ -6,10 +6,10 @@ class SongListsController < ApplicationController
   def create
     song_list = SongList.new(song_list_params)
     if song_list.save
-      flash[:notice] = "Your song list was successfully created."
+      flash[:notice] = "Your worship set was successfully created."
       redirect_to song_lists_path
     else
-      flash[:error] = "There was an error saving your song list."
+      flash[:error] = "There was an error saving your worship set."
       render :new
     end
   end
@@ -21,10 +21,10 @@ class SongListsController < ApplicationController
   def update
     song_list = SongList.not_deleted.find(params[:id])
     if song_list.update_clearing_song_list_items(song_list_params)
-      flash[:notice] = "Your song list was successfully updated."
+      flash[:notice] = "Your worship set was successfully updated."
       redirect_to song_lists_path
     else
-      flash[:error] = "There was an error saving your song list."
+      flash[:error] = "There was an error saving your worship set."
       render :edit
     end
   end
@@ -40,9 +40,9 @@ class SongListsController < ApplicationController
   def destroy
     song_list = SongList.not_deleted.find(params[:id])
     if song_list.soft_delete
-      flash[:notice] = "The song list was deleted."
+      flash[:notice] = "The worship set was deleted."
     else
-      flash[:error] = "There was an error deleting the song list."      
+      flash[:error] = "There was an error deleting the worship set."      
     end
     redirect_to song_lists_path
   end

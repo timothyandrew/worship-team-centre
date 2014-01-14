@@ -3,11 +3,11 @@
 <% end %>
 
 <% if @song_lists.empty? %>
-  <h1>You haven't added any song lists yet. <%= link_to "Create a Song List", new_song_list_path %></h1>
+  <h1>You haven't added any worship sets yet. <%= link_to "Create a Worship Set", new_song_list_path %></h1>
 <% else %>
 	<table class="table table-striped table-hover table-bordered table-responsive">
 		<tr>
-			<th>Song Lists</th>
+			<th>Worship Sets</th>
 			<th>Done On</th>
 			<th>Theme</th>
 			<th>Services</th>
@@ -29,7 +29,7 @@
         	<td><%= song_list.service %></td>
         	<td>
             <%= link_to "Edit", edit_song_list_path(song_list), class: "btn" %>
-            <%= link_to "Delete", song_list_path(song_list),  method: :delete, class: "btn btn-warning delete-song-list-button", confirm: "Are you sure you want to delete this song list?" %>
+            <%= link_to "Delete", song_list_path(song_list),  method: :delete, class: "btn btn-warning delete-song-list-button", confirm: "Are you sure you want to delete this worship set?" %>
             </td>
         </tr>
     <% end %>
