@@ -48,3 +48,5 @@ class window.WorshipTeamCenter.SongList
       $("#add-new-song-action").click(->)
     else
       $("#add-new-song-action").click(@add_new_song)
+
+    $("#add-new-song-select").trigger("chosen:updated")

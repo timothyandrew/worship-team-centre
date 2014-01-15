@@ -26,9 +26,9 @@
     </ul>
 
     <%= select_tag "songs", options_from_collection_for_select((@song_list.songs_not_in_list), :id, :name), id: "add-new-song-select" %>
-    <div>
-        <%= link_to "Add This Song", "javascript:void(0);", class: "btn btn-success", id: "add-new-song-action" %>
-    </div>
+    <%= link_to "Add This Song", "javascript:void(0);", class: "btn btn-success", id: "add-new-song-action" %>
 
-    <%= f.submit "Save Worship Set", class: "btn btn-info btn-large", id: 'create-song-list-action' %>
+    <div>
+        <%= f.submit "Save Worship Set", class: "btn btn-info btn-large", id: 'create-song-list-action' %>
+    </div>
 <% end %>

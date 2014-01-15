@@ -1,9 +1,4 @@
 <h2>Edit this Worship Set</h2>
 
 <%= render partial: "song_lists/form", locals: { song_list: @song_list } %>
-
-<script type="text/javascript">
-    var songList = new window.WorshipTeamCenter.SongList();
-    songList.bind_view();
-    $("#song_list_done_on").datepicker({ format: "yyyy-mm-dd"});
-</script>
+<%= render partial: "song_lists/javascript" %>

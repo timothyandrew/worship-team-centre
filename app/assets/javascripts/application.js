@@ -16,4 +16,5 @@
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require underscore
+//= require chosen
 //= require_tree .
