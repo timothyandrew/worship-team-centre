@@ -1,0 +1,32 @@
+class UserAvatar
+  def self.all
+    [
+      'https://imcworship-dev.s3.amazonaws.com/all/0025-0802-2512-5446_clip_art_graphic_of_a_yellow_electric_guitar_cartoon_character_peeking_over_a_surface.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/0025-0802-2512-5465_clip_art_graphic_of_a_yellow_electric_guitar_cartoon_character_with_welcoming_open_arms.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/0025-0802-2512-5515_clip_art_graphic_of_a_yellow_electric_guitar_cartoon_character_in_the_center_of_a_christmas_wreath.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/0025-0802-2512-5530_clip_art_graphic_of_a_yellow_electric_guitar_cartoon_character_peeking_around_a_corner.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/0025-0802-2512-5544_clip_art_graphic_of_a_yellow_electric_guitar_cartoon_character_singing_loud_into_a_microphone.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/0025-0802-2513-0150_clip_art_graphic_of_a_yellow_electric_guitar_cartoon_character_logo_with_red_paint_splatters.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/Bass_Guitar_Hero_by_Karate_Chop.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/Children-Musical-Instruments-Lessons-Photo-1024x1024.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/Music_26_tnb.png',
+      'https://imcworship-dev.s3.amazonaws.com/all/cartoon_boy.gif',
+      'https://imcworship-dev.s3.amazonaws.com/all/cartoon_group.gif',
+      'https://imcworship-dev.s3.amazonaws.com/all/cute-cartoon-girl-singing-2686266.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/drum.png',
+      'https://imcworship-dev.s3.amazonaws.com/all/images-1.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/images-2.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/images-3.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/images-4.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/images-5.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/images.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/jazz_drummer_269345.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/music_Guitar_Cartoon.gif',
+      'https://imcworship-dev.s3.amazonaws.com/all/music_lille_tromme_roed.jpg',
+      'https://imcworship-dev.s3.amazonaws.com/all/music_listening_to.gif',
+      'https://imcworship-dev.s3.amazonaws.com/all/music_piano_upright_lilla.gif',
+      'https://imcworship-dev.s3.amazonaws.com/all/musician-playing-piano-hi.png',
+      'https://imcworship-dev.s3.amazonaws.com/all/singer-cartoon1.jpg'
+    ]
+  end
+end
