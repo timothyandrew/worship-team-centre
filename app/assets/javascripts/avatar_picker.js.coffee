@@ -1,5 +1,5 @@
 class window.AvatarPicker
-  constructor: (@modal, @formField) ->
+  constructor: (@modal, @formField, @preview) ->
     @images = $(@modal).find('.avatar-wrapper')
     @images.each (i, image) =>
       $(image).click(@imageSelected)
@@ -7,4 +7,5 @@ class window.AvatarPicker
   imageSelected: (event) =>
     avatarUrl = $(event.target).attr('src')
     @formField.val(avatarUrl)
+    @preview.attr('src', avatarUrl)
     @modal.modal('hide')

@@ -3,35 +3,37 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <%= f.hidden_field :avatar %>
+
+  <a href="#" data-toggle="tooltip" title="Click to change your avatar." data-toggle="modal" data-target="#avatar-picker-modal" class="darken edit-avatar-tooltip">
+    <%= image_tag resource.avatar, class: "avatar avatar-medium" %>
+  </a>
+
+
+  <div>
+    <%= f.text_field :name, autofocus: true, placeholder: "Name", class: "sessions_form_field" %></div>
+
+  <div>
+  <%= f.email_field :email, placeholder: "Email Address", class: "sessions_form_field" %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+  <div>
+    <%= f.password_field :current_password, autocomplete: "off", placeholder: "Enter Current Password to Make Any Change", class: "sessions_form_field" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+  <div>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "Enter New Password (only if you want to change it)", class: "sessions_form_field" %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
+  <div>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm New Password (only if you want to change it)", class: "sessions_form_field" %></div>
 
-  <div><%= f.submit "Update" %></div>
 
-  <%= f.hidden_field :avatar %>
+  <div><%= f.submit "Update User Information", class: "sessions_submit_button btn btn-info" %></div>
+
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
 
 <div class="modal hide fade" id="avatar-picker-modal">
   <div class="modal-header">
@@ -52,8 +54,13 @@
 
 </div>
 
-<a class="btn btn-info" data-toggle="modal" data-target="#avatar-picker-modal">See Images</a>
-
 <script type="text/javascript" charset="utf-8">
-  new window.AvatarPicker($("#avatar-picker-modal"), $("#user_avatar"))
+  $(".edit-avatar-tooltip").tooltip({ placement: 'right', trigger: 'hover' })
+  $(".edit-avatar-tooltip").click(function(){
+    event.preventDefault();
+    event.stopPropagation();
+    $(".edit-avatar-tooltip").tooltip('hide');
+    $("#avatar-picker-modal").modal()
+  })
+  new window.AvatarPicker($("#avatar-picker-modal"), $("#user_avatar"), $(".avatar-medium"))
 </script>

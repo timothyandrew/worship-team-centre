@@ -3,3 +3,25 @@
   max-height: 100px;
   margin: 10px;
 }
+
+.avatar-medium {
+  max-width: 300px;
+  max-height: 300px;
+  margin: 0;
+  background-color: black;
+}
+
+a.darken {
+  display: inline-block;
+  background: black;
+  padding: 0;
+}
+
+a.darken img {
+  display: block;
+  transition: all 0.1s linear;
+}
+
+a.darken:hover img {
+  opacity: 0.5;
+}
