@@ -21,8 +21,6 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div>
-    <%= f.password_field :current_password, autocomplete: "off", placeholder: "Enter Current Password to Make Any Change", class: "sessions_form_field" %></div>
 
   <div>
     <%= f.password_field :password, autocomplete: "off", placeholder: "Enter New Password (only if you want to change it)", class: "sessions_form_field" %></div>
@@ -30,6 +28,7 @@
   <div>
     <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm New Password (only if you want to change it)", class: "sessions_form_field" %></div>
 
+  <div><%= f.password_field :current_password, autocomplete: "off", placeholder: "Enter Current Password (only if you're changing it)", class: "sessions_form_field" %></div>
 
   <div><%= f.submit "Update User Information", class: "sessions_submit_button btn btn-info" %></div>
 
