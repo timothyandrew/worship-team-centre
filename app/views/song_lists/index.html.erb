@@ -10,6 +10,7 @@
 			<th>Worship Sets</th>
 			<th>Done On</th>
 			<th>Theme</th>
+			<th>Leader</th>
 			<th>Services</th>
 			<th>Actions</th>
 		</tr>
@@ -26,6 +27,7 @@
     		</td>
         	<td><%= l(song_list.done_on, format: :long) %></td>
         	<td><%= simple_format(word_wrap(song_list.theme, line_width: 40)) %></td>
+        	<td><%= song_list.leader ? song_list.leader.name : link_to("No leader set", edit_song_list_path(song_list)) %></td>
         	<td><%= song_list.service %></td>
         	<td>
             <%= link_to "Edit", edit_song_list_path(song_list), class: "btn" %>

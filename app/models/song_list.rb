@@ -3,6 +3,7 @@ class SongList < ActiveRecord::Base
 
   has_many :song_list_items, dependent: :destroy
   has_many :songs, through: :song_list_items
+  belongs_to :leader, class_name: User
   accepts_nested_attributes_for :song_list_items
 
 

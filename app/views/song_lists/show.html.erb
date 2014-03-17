@@ -2,4 +2,8 @@
 
 <h4 class='song-list-theme'>Theme: <%= @song_list.theme %></h4>
 
+<% if @song_list.leader %>
+  <h4 class='song-list-leader'>Leader: <%= @song_list.leader.name %></h4>
+<% end %>
+
 <%= render partial: "songs_in_list", locals: { song_list: @song_list } %>
