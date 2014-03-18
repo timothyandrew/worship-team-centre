@@ -1,0 +1,18 @@
+<h2>Profile Page for <%= @user.name %></h2>
+
+<%= image_tag @user.avatar, class: "avatar avatar-medium user-show-avatar" %>
+
+<h4 class="user-show-item">Name: <%= @user.name %></h4>
+<h4 class="user-show-item">Email: <%= mail_to @user.email %></h4>
+
+
+<div class="last-in-team-on user-show-item">
+  <span>Was Last In A Team On</span>
+  <ol>
+  <% @user.all_song_lists_a_part_of.each do |song_list| %>
+    <li class="last-in-team-item">
+      <%= link_to "#{l(song_list.done_on, format: :long)} (#{song_list.service} Service)", song_list_path(song_list) %>
+    </li>
+  <% end %>
+  </ol>
+</div>

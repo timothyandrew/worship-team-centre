@@ -1,9 +1,22 @@
 <h2>Worship Set for <%= l(@song_list.done_on, format: :long) %> – <%= @song_list.service %> Service</h2>
+<%= link_to "Delete", song_list_path(@song_list), method: :delete, class: "edit-song-list-link btn btn-warning" %>
+<%= link_to "Edit", edit_song_list_path(@song_list), class: "edit-song-list-link btn btn-info" %>
 
 <h4 class='song-list-theme'>Theme: <%= @song_list.theme %></h4>
 
 <% if @song_list.leader %>
-  <h4 class='song-list-leader'>Leader: <%= @song_list.leader.name %></h4>
+  <h4 class='song-list-leader'>Leader: <%= link_to @song_list.leader.name, user_path(@song_list.leader) %></h4>
 <% end %>
 
+<h4 class='song-list-members'>Team:</h4>
+<ol>
+  <% @song_list.team_members.each do |user| %>
+    <li><%= link_to user.name, user_path(user) %></li>
+  <% end %>
+</ol>
+
+
+<h4 class='song-list-members'>Songs:</h4>
+
 <%= render partial: "songs_in_list", locals: { song_list: @song_list } %>
+

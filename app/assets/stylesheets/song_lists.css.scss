@@ -6,7 +6,7 @@
 	display: inline;
 }
 
-#create-song-list-action {
+#create-song-list-actions {
 	margin-top: 30px;
 }
 
@@ -19,9 +19,14 @@
 }
 
 .delete-song-list-button {
-	margin-left: 10px;
+  display: block;
+  margin-top: 5px;
 }
 
 #song_list_leader_id_chosen {
   margin-bottom: 10px;
+}
+
+.edit-song-list-link {
+  float: right;
 }
