@@ -14,7 +14,7 @@ class window.WorshipTeamCenter.NestedResource
     @index = @index + 1
 
     list_item_element = $("<li class='#{@itemClass}' #{@itemDataAttrId}='#{selected_option}'></li>")
-    remove_item_element = "<a class='#{@removeItemClass}' href='javascript:void(0);' #{@itemDataAttrId}='#{selected_option}' #{@itemDataAttrId}='#{selected_item_name}'>Remove</a>"
+    remove_item_element = "<a class='#{@removeItemClass}' href='javascript:void(0);' #{@itemDataAttrId}='#{selected_option}' #{@itemDataAttrName}='#{selected_item_name}'>Remove</a>"
     label_element = "<label class='#{@itemLabelClass}'>#{selected_item_name}</label>"
     hidden_element = "<input id='#{@getItemInputId(@index)}' name='#{@getItemInputName(@index)}' type='hidden' value='#{selected_option}'>"
 
