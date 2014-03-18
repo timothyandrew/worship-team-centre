@@ -11,6 +11,7 @@
 			<th>Done On</th>
 			<th>Theme</th>
 			<th>Leader</th>
+			<th>Team</th>
 			<th>Services</th>
 			<th>Actions</th>
 		</tr>
@@ -25,14 +26,27 @@
     				<% end %>
     			</ul>
     		</td>
-        	<td><%= l(song_list.done_on, format: :long) %></td>
-        	<td><%= simple_format(word_wrap(song_list.theme, line_width: 40)) %></td>
-        	<td><%= song_list.leader ? song_list.leader.name : link_to("No leader set", edit_song_list_path(song_list)) %></td>
-        	<td><%= song_list.service %></td>
-        	<td>
-            <%= link_to "Edit", edit_song_list_path(song_list), class: "btn" %>
-            <%= link_to "Delete", song_list_path(song_list),  method: :delete, class: "btn btn-warning delete-song-list-button", confirm: "Are you sure you want to delete this worship set?" %>
-            </td>
+        <td><%= l(song_list.done_on, format: :long) %></td>
+        <td><%= simple_format(word_wrap(song_list.theme, line_width: 40)) %></td>
+        <td><%= song_list.leader ? song_list.leader.name : link_to("No leader set", edit_song_list_path(song_list)) %></td>
+        <td>
+          <ul>
+            <% if song_list.team_members.present? %>
+              <% song_list.team_members.each do |user| %>
+                <li>
+                  <%= user.name %>
+                </li>
+              <% end %>
+            <% else %>
+              <%= link_to("No team set", edit_song_list_path(song_list)) %>
+            <% end %>
+          </ul>
+        </td>
+        <td><%= song_list.service %></td>
+        <td>
+          <%= link_to "Edit", edit_song_list_path(song_list), class: "btn" %>
+          <%= link_to "Delete", song_list_path(song_list),  method: :delete, class: "btn btn-warning delete-song-list-button", confirm: "Are you sure you want to delete this worship set?" %>
+        </td>
         </tr>
     <% end %>
     </table>
