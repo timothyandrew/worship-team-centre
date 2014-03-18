@@ -31,6 +31,21 @@
     <%= select_tag "songs", options_from_collection_for_select((@song_list.songs_not_in_list), :id, :name), id: "add-new-song-select" %>
     <%= link_to "Add This Song", "javascript:void(0);", class: "btn btn-success", id: "add-new-song-action" %>
 
+    <h3>Team Members</h3>
+
+    <ul id='team-members'>
+      <%= f.fields_for :team_memberships do |users_form| %>
+        <li class="team_membership_item" data-user-id="<%= users_form.object.user.id %>">
+          <%= users_form.label "#{users_form.object.user.name}", class: "user-label" %>
+          <%= users_form.hidden_field :user_id %>
+          <%= link_to "Remove", "javascript:void(0);", class: "remove-user-action", data: { user_id: users_form.object.user.id, user_name: users_form.object.user.name } %>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= select_tag "users", options_from_collection_for_select((@song_list.users_not_in_team), :id, :name), id: "add-new-user-select" %>
+    <%= link_to "Add This Team Member", "javascript:void(0);", class: "btn btn-success", id: "add-new-user-action" %>
+
     <div>
         <%= f.submit "Save Worship Set", class: "btn btn-info btn-large", id: 'create-song-list-action' %>
     </div>

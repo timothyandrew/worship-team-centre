@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317205042) do
+ActiveRecord::Schema.define(version: 20140318055106) do
 
   create_table "song_list_items", force: true do |t|
     t.integer  "song_list_id"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20140317205042) do
     t.string   "key"
     t.date     "deleted_at"
   end
+
+  create_table "team_memberships", force: true do |t|
+    t.integer  "song_list_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "team_memberships", ["song_list_id"], name: "index_team_memberships_on_song_list_id", using: :btree
+  add_index "team_memberships", ["user_id"], name: "index_team_memberships_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

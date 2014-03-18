@@ -1,7 +1,12 @@
 <script type="text/javascript">
     var songList = new window.WorshipTeamCenter.SongList();
     songList.bind_view();
+
+    var teamMembers = new window.WorshipTeamCenter.TeamMembers();
+    teamMembers.bind_view();
+
     $("#song_list_done_on").datepicker({ format: "yyyy-mm-dd"});
     $("#song_list_leader_id").chosen();
     $("#add-new-song-select").chosen();
+    $("#add-new-user-select").chosen();
 </script>
