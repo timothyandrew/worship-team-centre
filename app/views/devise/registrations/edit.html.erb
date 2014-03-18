@@ -9,7 +9,7 @@
     <a href="#" data-toggle="tooltip" title="Click to change your avatar." data-toggle="modal" data-target="#avatar-picker-modal" class="darken edit-avatar-tooltip">
       <%= image_tag resource.avatar, class: "avatar avatar-medium" %>
     </a>
-  <% unless resource.avatar %>
+  <% if resource.avatar.blank? %>
     <a href="#" data-toggle="modal" data-target="#avatar-picker-modal" class="edit-avatar-tooltip">Add an avatar</a>
   <% end %>
 
