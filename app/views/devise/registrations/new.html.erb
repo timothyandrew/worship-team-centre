@@ -3,6 +3,14 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <%= f.hidden_field :avatar %>
+
+  <a href="#" data-toggle="tooltip" title="Click to change your avatar." data-toggle="modal" data-target="#avatar-picker-modal" class="darken edit-avatar-tooltip">
+    <%= image_tag resource.avatar, class: "avatar avatar-medium" %>
+  </a>
+  <a href="#" data-toggle="modal" data-target="#avatar-picker-modal" class="edit-avatar-tooltip">Add an avatar</a>
+
+
   <div>
     <%= f.text_field :name, placeholder: "Name", class: "sessions_form_field" %></div>
 
@@ -18,4 +26,9 @@
   <div><%= f.submit "Sign up", class: "sessions_submit_button btn btn-info" %></div>
 <% end %>
 
+<%= render partial: 'avatar_picker_modal' %>
 
+
+<script type="text/javascript" charset="utf-8">
+  new window.AvatarPicker($("#avatar-picker-modal"), $("#user_avatar"), $(".avatar-medium"))
+</script>
