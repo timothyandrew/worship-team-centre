@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318055106) do
+ActiveRecord::Schema.define(version: 20140607075115) do
+
+  create_table "planned_roster_groups", force: true do |t|
+    t.date     "month"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "planned_rosters", force: true do |t|
+    t.date     "date"
+    t.text     "team"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "group_id"
+  end
+
+  add_index "planned_rosters", ["group_id"], name: "index_planned_rosters_on_group_id", using: :btree
 
   create_table "song_list_items", force: true do |t|
     t.integer  "song_list_id"
