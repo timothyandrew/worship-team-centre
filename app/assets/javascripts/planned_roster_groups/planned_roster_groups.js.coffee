@@ -29,5 +29,4 @@ WorshipTeamCenter.PlannedRosterGroups = React.createClass
     R.div {},
       WorshipTeamCenter.MonthSelect({onMonthChange: @updateRosters, ref: "month"})
       _.map @state.rosters, (roster, i) ->
-        console.log roster
         WorshipTeamCenter.PlannedRoster(_.extend(roster, {i: i}))
