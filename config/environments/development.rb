@@ -28,4 +28,6 @@ WorshipTeamCenter::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { host: 'worship-team-center.dev' }
+
+  config.react.variant = :development
 end

@@ -1,0 +1,5 @@
+<h1>Month: <%= @planned_roster_group.month %></h1>
+
+<% @planned_roster_group.planned_rosters.each do |roster| %>
+  <%= roster.team %>
+<% end %>

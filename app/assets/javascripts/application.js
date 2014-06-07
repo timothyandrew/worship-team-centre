@@ -17,4 +17,6 @@
 //= require bootstrap-datepicker
 //= require underscore
 //= require chosen
+//= require react
+//= require moment
 //= require_tree .
