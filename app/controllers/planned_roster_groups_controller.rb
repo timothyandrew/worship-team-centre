@@ -29,6 +29,11 @@ class PlannedRosterGroupsController < ApplicationController
     end
   end
 
+  def download_package
+    @planned_roster_group = PlannedRosterGroup.find(params[:id])
+    send_data(@planned_roster_group.generate_images, :type => 'application/zip', :filename => "#{SecureRandom.hex}.zip")
+  end
+
   private
 
   def create_roster_group_with_rosters

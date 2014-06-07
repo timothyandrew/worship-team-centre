@@ -5,7 +5,6 @@ class RosterDrawService
 
   def generate_image
     base_image = File.join(Rails.root, "app", "assets", "images", "roster-base.jpg")
-    puts base_image
     img = Magick::Image::read(base_image).first
 
     # FIRST HALF
