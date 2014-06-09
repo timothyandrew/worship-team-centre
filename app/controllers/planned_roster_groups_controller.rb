@@ -30,7 +30,7 @@ class PlannedRosterGroupsController < ApplicationController
   end
 
   def index
-    @planned_roster_groups = PlannedRosterGroup.all.order(:month)
+    @planned_roster_groups = PlannedRosterGroup.all.order(month: :desc)
   end
 
   def download_package
