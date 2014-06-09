@@ -1,6 +1,6 @@
 <div class="roster-planner-header">
 
-<h1>Month: <%= @planned_roster_group.month.strftime("%B %Y") %></h1>
+<h1>Roster for <%= @planned_roster_group.month.strftime("%B %Y") %></h1>
 
 <div class="pull-right">
   <%= link_to "Edit", edit_planned_roster_group_path(@planned_roster_group), class: "btn btn-warning" %>
