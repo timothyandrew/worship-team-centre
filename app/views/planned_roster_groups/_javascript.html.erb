@@ -1,0 +1,3 @@
+<script type="text/javascript">
+  React.renderComponent(WorshipTeamCenter.PlannedRosterGroups({rosters: <%= @planned_roster_group.planned_rosters.to_json.html_safe %>, month: "<%= @planned_roster_group.month.strftime("%Y-%m") %>"}), document.getElementById("planned_roster_groups"));
+</script>

@@ -1,0 +1,17 @@
+
+<div class="pull-right">
+  <%= link_to "Create Roster", new_planned_roster_group_path, class: "btn btn-warning" %>
+</div>
+
+<table class="table table-striped table-hover table-bordered table-responsive">
+  <tr>
+    <th>Month</th>
+  </tr>
+  <% @planned_roster_groups.each do |group| %>
+    <tr>
+      <td>
+        <%= link_to group.month.strftime("%B"), planned_roster_group_path(group) %>
+      </td>
+    </tr>
+  <% end %>
+</table>

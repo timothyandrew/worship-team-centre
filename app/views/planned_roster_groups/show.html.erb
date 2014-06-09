@@ -1,6 +1,9 @@
-<h1>Month: <%= @planned_roster_group.month %></h1>
+<h1>Month: <%= @planned_roster_group.month.strftime("%B") %></h1>
 
-<%= link_to "Download", download_package_planned_roster_group_path, method: :post %>
+<div class="pull-right">
+  <%= link_to "Edit", edit_planned_roster_group_path(@planned_roster_group), class: "btn btn-warning" %>
+  <%= link_to "Download Images", download_package_planned_roster_group_path, method: :post, class: "btn btn-success" %>
+</div>
 
 <% @planned_roster_group.planned_rosters.each do |roster| %>
   <%= roster.team %>

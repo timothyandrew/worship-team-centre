@@ -1,9 +1,7 @@
+<%= @planned_roster_group.errors.full_messages if @planned_roster_group.errors.present? %>
+
 <%= form_for @planned_roster_group do |f| %>
   <div id="planned_roster_groups"></div>
 
   <%= f.submit "Save", class: "btn btn-primary btn-large" %>
 <% end %>
-
-<script type="text/javascript">
-  React.renderComponent(WorshipTeamCenter.PlannedRosterGroups({rosters: <%= @planned_roster_group.planned_rosters.to_json.html_safe %>}), document.getElementById("planned_roster_groups"));
-</script>

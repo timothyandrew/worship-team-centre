@@ -3,14 +3,20 @@ R = React.DOM
 WorshipTeamCenter.MonthSelect = React.createClass
   displayName: "MonthSelect"
 
+  getInitialState: -> { month: moment(@props.timestamp).month() + 1, year: moment(@props.timestamp).year() }
+
   getMonth: ->
     year = @refs.year.getDOMNode().value
     month = @refs.month.getDOMNode().value
     moment("#{year}-#{month}")
 
+  handleMonthChange: ->
+    @setState(year: @refs.year.getDOMNode().value, month: @refs.month.getDOMNode().value)
+    @props.onMonthChange()
+
   render: ->
     R.div {},
-      R.select {id: "planned_roster_group_month_2i", name: "planned_roster_group[month(2i)]", onChange: @props.onMonthChange, ref: "month"},
+      R.select {id: "planned_roster_group_month_2i", onChange: @handleMonthChange, ref: "month", value: @state.month},
         R.option {value: "1"}, "January"
         R.option {value: "2"}, "February"
         R.option {value: "3"}, "March"
@@ -24,10 +30,12 @@ WorshipTeamCenter.MonthSelect = React.createClass
         R.option {value: "11"}, "November"
         R.option {value: "12"}, "December"
 
-      R.select {id: "planned_roster_group_month_1i", name: "planned_roster_group[month(1i)]", onChange: @props.onMonthChange, ref: "year"},
+      R.select {id: "planned_roster_group_month_1i", onChange: @handleMonthChange, ref: "year", value: @state.month},
         R.option {value: "2014"}, "2014"
         R.option {value: "2015"} , "2015"
         R.option {value: "2016"} , "2016"
         R.option {value: "2017"} , "2017"
         R.option {value: "2018"} , "2018"
         R.option {value: "2019"} , "2019"
+
+      R.input {name: "[planned_roster_group][month]", value: "#{@state.year}-#{@state.month}-01", className: "hidden", readOnly: true}

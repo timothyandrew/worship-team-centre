@@ -12,21 +12,25 @@ class PlannedRosterGroupsController < ApplicationController
   end
 
   def create
-    if group = create_roster_group_with_rosters
-      redirect_to planned_roster_group_path(group)
+    @planned_roster_group = PlannedRosterGroup.new(planned_roster_group_params)
+    if create_roster_group_with_rosters
+      redirect_to planned_roster_group_path(@planned_roster_group)
     else
-      @planned_roster_group = group
       render :new
     end
   end
 
   def update
     @planned_roster_group = PlannedRosterGroup.find(params[:id])
-    if @planned_roster_group.update_attributes(planned_roster_group_params)
+    if update_roster_group_with_rosters
       redirect_to planned_roster_group_path(@planned_roster_group)
     else
       render :edit
     end
+  end
+
+  def index
+    @planned_roster_groups = PlannedRosterGroup.all.order(:month)
   end
 
   def download_package
@@ -38,12 +42,12 @@ class PlannedRosterGroupsController < ApplicationController
 
   def create_roster_group_with_rosters
     PlannedRosterGroup.transaction do
-      prg = PlannedRosterGroup.create!(month: planned_roster_group_params[:month])
-      prg.planned_rosters.destroy_all
+      @planned_roster_group.save!
+      @planned_roster_group.planned_rosters.destroy_all
       params[:planned_rosters].each do |i, pr|
-        PlannedRoster.create!(team: pr[:team], date: pr[:date], planned_roster_group: prg)
+        PlannedRoster.create!(team: pr[:team], date: pr[:date], planned_roster_group: @planned_roster_group)
       end
-      prg
+      @planned_roster_group
     end
   rescue ActiveRecord::RecordInvalid
     false
@@ -51,12 +55,13 @@ class PlannedRosterGroupsController < ApplicationController
 
   def update_roster_group_with_rosters
     PlannedRosterGroup.transaction do
-      prg = PlannedRosterGroup.find(id: params[:id])
-      prg.planned_rosters.destroy_all
+      Rails.logger.fatal planned_roster_group_params
+      @planned_roster_group.update_attributes!(planned_roster_group_params)
+      @planned_roster_group.planned_rosters.destroy_all
       params[:planned_rosters].each do |i, pr|
-        PlannedRoster.create!(team: pr[:team], date: pr[:date], planned_roster_group: prg)
+        PlannedRoster.create!(team: pr[:team], date: pr[:date], planned_roster_group: @planned_roster_group)
       end
-      prg
+      @planned_roster_group
     end
   rescue ActiveRecord::RecordInvalid
     false
