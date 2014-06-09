@@ -1,6 +1,6 @@
 class PlannedRosterGroupsController < ApplicationController
   def new
-    @planned_roster_group = PlannedRosterGroup.new
+    @planned_roster_group = PlannedRosterGroup.new(month: Date.today)
   end
 
   def edit
