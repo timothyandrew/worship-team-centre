@@ -4,6 +4,7 @@ class PlannedRosterGroup < ActiveRecord::Base
   has_many :planned_rosters, foreign_key: :group_id
 
   validates_presence_of :month
+  validates_uniqueness_of :month
   accepts_nested_attributes_for :planned_rosters
 
   def generate_images

@@ -10,5 +10,5 @@ WorshipTeamCenter.PlannedRosterItem = React.createClass
 
   render: ->
     R.div {className: "form-group"},
-      R.label {className: "form-control"}, @props.role
+      R.label {className: "form-control"}, _.str.humanize(@props.role)
       R.input {className: "form-control", name: "[planned_rosters][#{@props.i}][team][#{@props.type}][#{@props.role}]", value: @state.value, onChange: @handleChange}

@@ -16,7 +16,10 @@
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require underscore
+//= require underscore.string
 //= require chosen
 //= require react
 //= require moment
 //= require_tree .
+
+_.str = require('underscore.string');
