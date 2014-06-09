@@ -38,7 +38,7 @@ class RosterDrawService
     header.annotate(img, 100,30,78,520, "#{@roster.date} Evening")
 
     # TOP HEADER
-    top_header.annotate(img, 100,30,35,86, "#{@roster.date}")    
+    top_header.annotate(img, 100,30,35,86, "#{@roster.date.strftime("%B %Y")}")
 
     img
   end
