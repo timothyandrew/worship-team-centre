@@ -18,7 +18,6 @@ WorshipTeamCenter.PlannedRoster = React.createClass
       WorshipTeamCenter.PlannedRosterItem(type: "morning", role: "singing", value: (@props.team && @props.team.morning.singing), i: @props.i)
 
 
-
       R.h2 {}, "Evening"
 
       WorshipTeamCenter.PlannedRosterItem(type: "evening", role: "leader", value: (@props.team && @props.team.evening.leader), i: @props.i)
@@ -28,3 +27,5 @@ WorshipTeamCenter.PlannedRoster = React.createClass
       WorshipTeamCenter.PlannedRosterItem(type: "evening", role: "lead_guitar", value: (@props.team && @props.team.evening.lead_guitar), i: @props.i)
       WorshipTeamCenter.PlannedRosterItem(type: "evening", role: "drums", value: (@props.team && @props.team.evening.drums), i: @props.i)
       WorshipTeamCenter.PlannedRosterItem(type: "evening", role: "singing", value: (@props.team && @props.team.evening.singing), i: @props.i)
+
+      R.input {name: "[planned_rosters][#{@props.i}][date]", value: moment(@props.date).format("YYYY-MM-DD"), className: "hidden" }

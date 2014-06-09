@@ -8,30 +8,30 @@ class PlannedRoster < ActiveRecord::Base
   end
 
   def leader(type = :morning)
-    team[type][:leader]
+    team[type][:leader].presence || "?"
   end
 
   def keyboard(type = :morning)
-    team[type][:keyboard]
+    team[type][:keyboard].presence || "?"
   end
 
   def powerpoint(type = :morning)
-    team[type][:powerpoint]
+    team[type][:powerpoint].presence || "?"
   end
 
   def guitar(type = :morning)
-    team[type][:guitar]
+    team[type][:guitar].presence || "?"
   end
 
   def lead_guitar(type = :morning)
-    team[type][:lead_guitar]
+    team[type][:lead_guitar].presence || "?"
   end
 
   def drums(type = :morning)
-    team[type][:drums]
+    team[type][:drums].presence || "?"
   end
 
   def singing(type = :morning)
-    team[type][:singing]
+    team[type][:singing].presence || "?"
   end
 end

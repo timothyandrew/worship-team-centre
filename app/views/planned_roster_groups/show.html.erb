@@ -5,6 +5,45 @@
   <%= link_to "Download Images", download_package_planned_roster_group_path, method: :post, class: "btn btn-success" %>
 </div>
 
-<% @planned_roster_group.planned_rosters.each do |roster| %>
-  <%= roster.team %>
-<% end %>
+<table class="table table-responsive table-bordered table-hover">
+  <tr>
+    <th>Date</th>
+    <th>Type</th>
+    <th>Leader</th>
+    <th>Keyboard</th>
+    <th>PowerPoint</th>
+    <th>Guitar</th>
+    <th>Lead Guitar</th>
+    <th>Drums</th>
+    <th>Singing</th>
+  </tr>
+
+  <% @planned_roster_group.planned_rosters.each do |roster| %>
+    <tr>
+
+      <tr>
+        <td><%= roster.date.strftime("%d %B") %></td>
+        <td>Morning</td>
+        <td><%= roster.leader(:morning) %></td>
+        <td><%= roster.keyboard(:morning) %></td>
+        <td><%= roster.powerpoint(:morning) %></td>
+        <td><%= roster.guitar(:morning) %></td>
+        <td><%= roster.lead_guitar(:morning) %></td>
+        <td><%= roster.drums(:morning) %></td>
+        <td><%= roster.singing(:morning) %></td>
+      </tr>
+      <tr>
+        <td><%= roster.date.strftime("%d %B") %></td>
+        <td>Evening</td>
+        <td><%= roster.leader(:evening) %></td>
+        <td><%= roster.keyboard(:evening) %></td>
+        <td><%= roster.powerpoint(:evening) %></td>
+        <td><%= roster.guitar(:evening) %></td>
+        <td><%= roster.lead_guitar(:evening) %></td>
+        <td><%= roster.drums(:evening) %></td>
+        <td><%= roster.singing(:evening) %></td>
+      </tr>
+
+    </tr>
+  <% end %>
+</table>
