@@ -9,28 +9,28 @@ class RosterDrawService
 
     # FIRST HALF
 
-    text.annotate(img, 100,30,88,235, @roster.leader(:morning))
-    text.annotate(img, 100,30,285,235, @roster.keyboard(:morning))
-    text.annotate(img, 100,30,472,235, @roster.powerpoint(:morning))
+    text.annotate(img, 100,30,88,260, @roster.leader(:morning))
+    text.annotate(img, 100,30,285,260, @roster.keyboard(:morning))
+    text.annotate(img, 100,30,472,260, @roster.powerpoint(:morning))
 
-    text.annotate(img, 100,30,88,325, @roster.guitar(:morning))
-    text.annotate(img, 100,30,280,325, @roster.bass(:morning))
-    text.annotate(img, 100,30,480,325, @roster.drums(:morning))
+    text.annotate(img, 100,30,88,350, @roster.guitar(:morning))
+    text.annotate(img, 100,30,280,350, @roster.bass(:morning))
+    text.annotate(img, 100,30,480,350, @roster.drums(:morning))
 
-    text.annotate(img, 100,30,95,425, @roster.singing(:morning))
+    text.annotate(img, 100,30,105,450, @roster.singing(:morning))
 
 
     # SECOND HALF
 
-    text.annotate(img, 100,30,88,600, @roster.leader(:evening))
-    text.annotate(img, 100,30,285,600, @roster.keyboard(:evening))
-    text.annotate(img, 100,30,472,600, @roster.powerpoint(:evening))
+    text.annotate(img, 100,30,88,615, @roster.leader(:evening))
+    text.annotate(img, 100,30,285,615, @roster.keyboard(:evening))
+    text.annotate(img, 100,30,472,615, @roster.powerpoint(:evening))
 
-    text.annotate(img, 100,30,88,690, @roster.guitar(:evening))
-    text.annotate(img, 100,30,280,690, @roster.bass(:evening))
-    text.annotate(img, 100,30,480,690, @roster.drums(:evening))
+    text.annotate(img, 100,30,88,705, @roster.guitar(:evening))
+    text.annotate(img, 100,30,280,705, @roster.bass(:evening))
+    text.annotate(img, 100,30,480,705, @roster.drums(:evening))
 
-    text.annotate(img, 100,30,95,790, @roster.singing(:evening))
+    text.annotate(img, 100,30,105,805, @roster.singing(:evening))
 
     # HEADERS
 
@@ -76,7 +76,8 @@ class RosterDrawService
     @text.pointsize = 16
     @text.font_weight = Magick::BoldWeight
     @text.font_family = "helvetica"
-    @text.stroke = 'transparent'    
+    @text.stroke = 'transparent'
+    @text.align = Magick::LeftAlign
     @text
   end
 end
