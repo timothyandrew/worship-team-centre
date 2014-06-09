@@ -14,7 +14,7 @@ class RosterDrawService
     text.annotate(img, 100,30,472,235, @roster.powerpoint(:morning))
 
     text.annotate(img, 100,30,88,325, @roster.guitar(:morning))
-    text.annotate(img, 100,30,280,325, @roster.lead_guitar(:morning))
+    text.annotate(img, 100,30,280,325, @roster.bass(:morning))
     text.annotate(img, 100,30,480,325, @roster.drums(:morning))
 
     text.annotate(img, 100,30,95,425, @roster.singing(:morning))
@@ -27,15 +27,15 @@ class RosterDrawService
     text.annotate(img, 100,30,472,600, @roster.powerpoint(:evening))
 
     text.annotate(img, 100,30,88,690, @roster.guitar(:evening))
-    text.annotate(img, 100,30,280,690, @roster.lead_guitar(:evening))
+    text.annotate(img, 100,30,280,690, @roster.bass(:evening))
     text.annotate(img, 100,30,480,690, @roster.drums(:evening))
 
     text.annotate(img, 100,30,95,790, @roster.singing(:evening))
 
     # HEADERS
 
-    header.annotate(img, 100,30,68,160, "#{@roster.date} Morning")    
-    header.annotate(img, 100,30,68,520, "#{@roster.date} Evening")
+    header.annotate(img, 100,30,78,160, "#{@roster.date} Morning")
+    header.annotate(img, 100,30,78,520, "#{@roster.date} Evening")
 
     # TOP HEADER
     top_header.annotate(img, 100,30,35,86, "#{@roster.date}")    

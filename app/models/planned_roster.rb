@@ -23,8 +23,8 @@ class PlannedRoster < ActiveRecord::Base
     team[type][:guitar].presence || "?"
   end
 
-  def lead_guitar(type = :morning)
-    team[type][:lead_guitar].presence || "?"
+  def bass(type = :morning)
+    team[type][:bass].presence || "?"
   end
 
   def drums(type = :morning)
