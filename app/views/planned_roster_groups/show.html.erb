@@ -1,8 +1,12 @@
+<div class="roster-planner-header">
+
 <h1>Month: <%= @planned_roster_group.month.strftime("%B %Y") %></h1>
 
 <div class="pull-right">
   <%= link_to "Edit", edit_planned_roster_group_path(@planned_roster_group), class: "btn btn-warning" %>
   <%= link_to "Download Images", download_package_planned_roster_group_path, method: :post, class: "btn btn-success" %>
+</div>
+
 </div>
 
 <table class="table table-responsive table-bordered table-hover">
