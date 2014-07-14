@@ -3,6 +3,7 @@ WorshipTeamCenter::Application.routes.draw do
   resources :users, only: [:show]
   resources :song_lists
   resources :songs
+  resources :presentations
   resources :planned_roster_groups do
     member { post "download_package" }
   end
