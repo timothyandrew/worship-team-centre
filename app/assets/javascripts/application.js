@@ -21,5 +21,3 @@
 //= require react
 //= require moment
 //= require_tree .
-
-_.str = require('underscore.string');
