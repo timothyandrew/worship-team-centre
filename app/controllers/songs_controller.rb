@@ -36,7 +36,7 @@ class SongsController < ApplicationController
   end
 
   def show
-    @song = Song.not_deleted.find(params[:id])
+    @song = Song.not_deleted.find(params[:id]).decorate
   end
 
 

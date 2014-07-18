@@ -17,3 +17,5 @@ gem 'rubyzip', '>= 1.0.0'
 gem 'thin'
 gem 'rest_client'
 gem 'figaro'
+gem "font-awesome-rails"
+gem 'draper'
