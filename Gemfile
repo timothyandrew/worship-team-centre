@@ -19,3 +19,4 @@ gem 'rest_client'
 gem 'figaro'
 gem "font-awesome-rails"
 gem 'draper'
+gem 'mixpanel-ruby'

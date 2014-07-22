@@ -6,6 +6,7 @@ class SongsController < ApplicationController
   def create
     song = Song.new(song_params)
     if song.save
+      track_event("Created song.", {song: song.attributes})
       flash[:notice] = "Your song was successfully created."
       redirect_to song_path(song)
     else
@@ -22,6 +23,7 @@ class SongsController < ApplicationController
   def update
     song = Song.not_deleted.find(params[:id])
     if song.update(song_params)
+      track_event("Updated song.", {song: song.attributes})
       flash[:notice] = "Your song was successfully updated."
       redirect_to song_path(song)
     else

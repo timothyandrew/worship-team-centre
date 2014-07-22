@@ -13,4 +13,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :avatar
     devise_parameter_sanitizer.for(:account_update) << :name
   end
+
+  def track_event(message, options = {})
+    @tracker ||= Mixpanel::Tracker.new(Figaro.env.mixpanel_token)
+    @tracker.track(current_user.id, message, options)
+    @tracker.people.set(current_user.id, {
+      '$name'    => current_user.name,
+      '$email'   => current_user.email,
+      '$created' => current_user.created_at
+    })
+  end
 end

@@ -14,6 +14,7 @@ class PlannedRosterGroupsController < ApplicationController
   def create
     @planned_roster_group = PlannedRosterGroup.new(planned_roster_group_params)
     if create_roster_group_with_rosters
+      track_event("Created roster.", {roster: @planned_roster_group.planned_rosters.pluck(:team)})
       redirect_to planned_roster_group_path(@planned_roster_group)
     else
       render :new
@@ -23,6 +24,7 @@ class PlannedRosterGroupsController < ApplicationController
   def update
     @planned_roster_group = PlannedRosterGroup.find(params[:id])
     if update_roster_group_with_rosters
+      track_event("Updated roster.", {roster: @planned_roster_group.planned_rosters.pluck(:team)})
       redirect_to planned_roster_group_path(@planned_roster_group)
     else
       render :edit
@@ -35,6 +37,7 @@ class PlannedRosterGroupsController < ApplicationController
 
   def download_package
     @planned_roster_group = PlannedRosterGroup.find(params[:id])
+    track_event("Generated roster images.", {roster: @planned_roster_group.planned_rosters.pluck(:team)})
     send_data(@planned_roster_group.generate_images, :type => 'application/zip', :filename => "#{SecureRandom.hex}.zip")
   end
 
