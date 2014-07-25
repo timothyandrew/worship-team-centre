@@ -23,6 +23,7 @@ gem 'mixpanel-ruby'
 
 group :test do
   gem 'minitest'
+  gem 'rake'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'selenium-webdriver'

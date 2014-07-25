@@ -199,6 +199,7 @@ DEPENDENCIES
   pg
   rails (= 4.0.0)
   rails_12factor
+  rake
   react-rails (~> 0.10.0.0)
   rest_client
   rmagick
