@@ -20,9 +20,9 @@ class SongListsController < ApplicationController
   end
 
   def update
-    song_list = SongList.not_deleted.find(params[:id])
-    if song_list.update_clearing_song_list_items_and_team_members(song_list_params)
-      track_event("Updated song list.", {songs: song_list.songs.pluck(:name), song_list: song_list.attributes})
+    @song_list = SongList.not_deleted.find(params[:id])
+    if @song_list.update_clearing_song_list_items_and_team_members(song_list_params)
+      track_event("Updated song list.", {songs: @song_list.songs.pluck(:name), song_list: @song_list.attributes})
       flash[:notice] = "Your worship set was successfully updated."
       redirect_to song_lists_path
     else

@@ -26,22 +26,30 @@ class SongList < ActiveRecord::Base
   def update_clearing_song_list_items_and_team_members(params)
   	song_list_items_attributes = params.delete(:song_list_items_attributes)
     team_memberships_attributes = params.delete(:team_memberships_attributes)
-  	transaction do
-  	  update!(params)
-  	  song_list_items.destroy_all
+    transaction do
+      update!(params)
+      song_list_items.destroy_all
       team_memberships.destroy_all
 
-      song_list_items_attributes.map(&:last).each do |song_list_item_attrs|
-  	  	if song_list_item_attrs.has_key?(:song_id)
-  	  		SongListItem.create(song_list_id: self.id, song_id: song_list_item_attrs[:song_id])
-  	  	end
-      end
-
-      team_memberships_attributes.map(&:last).each do |team_membership_attrs|
-        if team_membership_attrs.has_key?(:user_id)
-          TeamMembership.create(song_list_id: self.id, user_id: team_membership_attrs[:user_id])
+      if song_list_items_attributes.present?
+        song_list_items_attributes.map(&:last).each do |song_list_item_attrs|
+          if song_list_item_attrs.has_key?(:song_id)
+            SongListItem.create!(song_list_id: self.id, song_id: song_list_item_attrs[:song_id])
+          end
         end
       end
-  	end
+
+      if team_memberships_attributes.present?
+        team_memberships_attributes.map(&:last).each do |team_membership_attrs|
+          if team_membership_attrs.has_key?(:user_id)
+            TeamMembership.create!(song_list_id: self.id, user_id: team_membership_attrs[:user_id])
+          end
+        end
+      end
+    end
+
+    true
+  rescue ActiveRecord::RecordInvalid
+    false
   end
 end
