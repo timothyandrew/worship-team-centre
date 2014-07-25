@@ -20,3 +20,13 @@ gem 'figaro'
 gem "font-awesome-rails"
 gem 'draper'
 gem 'mixpanel-ruby'
+
+group :test do
+  gem 'minitest'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  gem 'minitest-reporters'
+  gem 'factory_girl_rails'
+  gem 'faker'
+end
