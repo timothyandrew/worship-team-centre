@@ -17,4 +17,9 @@ class Song < ActiveRecord::Base
   		name
   	end
   end
+
+  def last_done_on
+    latest_song_list = song_lists.order(:done_on).last
+    latest_song_list.done_on if latest_song_list
+  end
 end

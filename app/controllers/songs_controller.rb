@@ -34,7 +34,7 @@ class SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.not_deleted.order(:created_at)
+    @songs = Song.not_deleted.order(:created_at).decorate
   end
 
   def show

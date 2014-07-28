@@ -11,7 +11,7 @@
     <th>Song Name</th>
     <th>Lyrics</th>
     <th>Key</th>
-    <th>Added On</th>
+    <th>Last Done On</th>
     <th>Actions</th>
   </tr>
 
@@ -20,7 +20,7 @@
     <td><%= link_to song.name, song_path(song), class: "song-name" %></td>
     <td><%= simple_format(truncate(song.lyrics, length: 100, separator: "\n")) %></td>
     <td><%= song.key %></td>
-    <td><%=  time_ago_in_words(song.created_at) %> ago</td>
+    <td><%= song.last_done_on %></td>
     <td><%= link_to "Edit", edit_song_path(song), class: "btn" %></td>
   </tr>
   <% end %>
