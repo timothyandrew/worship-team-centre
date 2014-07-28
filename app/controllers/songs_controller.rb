@@ -34,7 +34,7 @@ class SongsController < ApplicationController
   end
 
   def index
-    @songs = SongDecorator.decorate_collection(Song.not_deleted.apply_ordering(params[:sort]))
+    @songs = SongDecorator.decorate_collection(Song.not_deleted.apply_ordering(params[:sort], params[:order]))
   end
 
   def show

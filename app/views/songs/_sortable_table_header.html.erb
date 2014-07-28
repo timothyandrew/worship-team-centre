@@ -1,0 +1,10 @@
+<%= link_to name, songs_path(sort: key, order: (params[:order] == "asc" ? "desc" : "asc")) %>
+
+
+<% if params[:sort].to_sym == key.to_sym %>
+  <% if params[:order] == "asc" %>
+    <%= fa_icon "caret-up" %>
+  <% elsif params[:order] == "desc" %>
+    <%= fa_icon "caret-down" %>
+  <% end %>
+<% end %>

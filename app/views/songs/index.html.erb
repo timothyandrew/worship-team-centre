@@ -8,10 +8,10 @@
 
 <table class="table table-striped table-hover table-responsive table-bordered">
   <tr>
-    <th><%= link_to "Song Name", songs_path(sort: :name) %></th>
-    <th><%= link_to "Lyrics", songs_path(sort: :lyrics) %></th>
-    <th><%= link_to "Key", songs_path(sort: :key) %></th>
-    <th><%= link_to "Last Done On", songs_path(sort: :done_on) %></th>
+    <th><%= render partial: 'sortable_table_header', locals: {name: "Song Name", key: :name} %></th>
+    <th><%= render partial: 'sortable_table_header', locals: {name: "Lyrics", key: :lyrics} %></th>
+    <th><%= render partial: 'sortable_table_header', locals: {name: "Key", key: :key} %></th>
+    <th><%= render partial: 'sortable_table_header', locals: {name: "Last Done On", key: :done_on} %></th>
     <th>Actions</th>
   </tr>
 
