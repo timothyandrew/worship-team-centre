@@ -19,7 +19,25 @@ class Song < ActiveRecord::Base
   end
 
   def last_done_on
-    latest_song_list = song_lists.order(:done_on).last
+    latest_song_list = SongList.joins(:song_list_items).where(song_list_items: {song_id: self.id} ).order(:done_on).last
     latest_song_list.done_on if latest_song_list
+  end
+
+  def self.apply_ordering(key)
+    key = key.presence || "created_at"
+
+    if key == "done_on"
+      order_by_last_done_on
+    else
+      order(key)
+    end
+  end
+
+  def self.order_by_last_done_on
+    scope = joins("LEFT OUTER JOIN song_list_items ON song_list_items.song_id = songs.id LEFT OUTER JOIN song_lists ON song_lists.id = song_list_items.song_list_id")
+    scope = scope.select("DISTINCT ON (songs.id) song_lists.done_on, songs.*").order("songs.id, song_lists.done_on DESC")
+
+    records = connection.execute("SELECT songs.id, songs.name, songs.lyrics, songs.key FROM (#{scope.to_sql}) AS songs ORDER BY done_on NULLS FIRST")
+    records.map {|record| Song.new(record)}
   end
 end
