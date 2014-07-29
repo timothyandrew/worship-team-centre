@@ -35,6 +35,7 @@ class SongsController < ApplicationController
 
   def index
     @songs = SongDecorator.decorate_collection(Song.not_deleted.apply_ordering(params[:sort], params[:order]))
+    ActiveRecord::Associations::Preloader.new(@songs, :song_lists).run
   end
 
   def show

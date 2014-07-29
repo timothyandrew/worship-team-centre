@@ -19,7 +19,7 @@ class Song < ActiveRecord::Base
   end
 
   def last_done_on
-    latest_song_list = SongList.joins(:song_list_items).where(song_list_items: {song_id: self.id} ).order(:done_on).last
+    latest_song_list = song_lists.sort_by(&:done_on).last
     latest_song_list.done_on if latest_song_list
   end
 
