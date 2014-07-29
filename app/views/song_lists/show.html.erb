@@ -1,6 +1,8 @@
 <h2>Worship Set for <%= l(@song_list.done_on, format: :long) %> – <%= @song_list.service %> Service</h2>
 <%= link_to "Delete", song_list_path(@song_list), method: :delete, class: "edit-song-list-link btn btn-warning" %>
-<%= link_to "Edit", edit_song_list_path(@song_list), class: "edit-song-list-link btn btn-info" %>
+<%= link_to "Edit", edit_song_list_path(@song_list), class: "edit-song-list-link btn btn-success" %>
+<%= link_to "Print", "javascript:window.print();", class: "edit-song-list-link btn btn-warning" %>
+<%= link_to "PPT", bulk_create_presentations_path(song_list_id: @song_list.id), method: :post, class: "btn btn-danger edit-song-list-link" %>
 
 <h4 class='song-list-theme'>Theme: <%= @song_list.theme %></h4>
 
