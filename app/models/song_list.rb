@@ -11,6 +11,8 @@ class SongList < ActiveRecord::Base
   accepts_nested_attributes_for :team_memberships
   has_many :team_members, through: :team_memberships, source: :user
 
+  validates_presence_of :done_on
+
   SERVICES = %w(Morning Evening Other)
 
   validates_inclusion_of :service, in: SERVICES
