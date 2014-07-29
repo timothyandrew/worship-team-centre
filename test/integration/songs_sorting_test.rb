@@ -14,9 +14,9 @@ class SongsSortingTest < ActionDispatch::IntegrationTest
     click_link "All Songs"
 
     click_link "Last Done On"
-    assert_match /Fourth Song.*Third Song.*Second Song.*First Song/m, page.body
+    assert page.has_content?(/Fourth Song.*Third Song.*Second Song.*First Song/)
 
     click_link "Last Done On"
-    assert_match /First Song.*Second Song.*Third Song.*Fourth Song/m, page.body
+    assert page.has_content?(/First Song.*Second Song.*Third Song.*Fourth Song/)
   end
 end
