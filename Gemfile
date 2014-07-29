@@ -20,6 +20,7 @@ gem 'figaro'
 gem "font-awesome-rails"
 gem 'draper'
 gem 'mixpanel-ruby'
+gem 'rack-mini-profiler'
 
 group :test do
   gem 'minitest'
@@ -30,8 +31,4 @@ group :test do
   gem 'minitest-reporters'
   gem 'factory_girl_rails'
   gem 'faker'
-end
-
-group :development do
-  gem 'rack-mini-profiler'
 end

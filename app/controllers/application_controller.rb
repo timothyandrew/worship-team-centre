@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   before_filter :authenticate_user!
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :authorize_rack_mini_profiler
   protect_from_forgery with: :exception
 
   protected
@@ -22,5 +23,11 @@ class ApplicationController < ActionController::Base
       '$email'   => current_user.email,
       '$created' => current_user.created_at
     })
+  end
+
+  def authorize_rack_mini_profiler
+    if params[:debug].present?
+      Rack::MiniProfiler.authorize_request
+    end
   end
 end
