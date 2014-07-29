@@ -8,12 +8,14 @@
   <h4 class='song-list-leader'>Leader: <%= link_to @song_list.leader.name, user_path(@song_list.leader) %></h4>
 <% end %>
 
-<h4 class='song-list-members'>Team:</h4>
-<ol>
-  <% @song_list.team_members.each do |user| %>
-    <li><%= link_to user.name, user_path(user) %></li>
-  <% end %>
-</ol>
+<div class="song-list-members">
+  <h4>Team:</h4>
+  <ol>
+    <% @song_list.team_members.each do |user| %>
+      <li><%= link_to user.name, user_path(user) %></li>
+    <% end %>
+  </ol>
+</div>
 
 
 <h4 class='song-list-members'>Songs:</h4>

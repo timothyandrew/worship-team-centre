@@ -1,0 +1,41 @@
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.navbar {
+  display: none;
+}
+
+.edit-song-list-link {
+  display: none;
+}
+
+.songs-in-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.song-list-members {
+  display: none;
+}
+
+.song-list-leader a {
+  text-decoration: none;
+  color: #000;
+}
+
+.songs-in-list .song-name a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+h4.song-list-members {
+  display: none;
+}
+
+.songs-in-list .song-lyrics {
+  line-height: 21px;
+}

@@ -29,8 +29,13 @@
 
 .edit-song-list-link {
   float: right;
+  margin: 0 2px;
 }
 
 td.actions {
   width: 120px;
+}
+
+.songs-in-list .song-lyrics {
+  display: none;
 }

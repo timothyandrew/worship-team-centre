@@ -1,7 +1,13 @@
-<ol>
+<ol class="songs-in-list">
 <% song_list.songs.not_deleted.each do |song| %>
   <li>
-    <%= link_to song.name, song_path(song) %>
+    <div class="song-name">
+      <%= link_to song.name, song_path(song) %>
+    </div>
+
+    <div class="song-lyrics">
+      <p><%= simple_format song.lyrics %></p>
+    </div>
   </li>
 <% end %>
 </ol>
