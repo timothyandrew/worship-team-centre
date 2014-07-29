@@ -57,6 +57,7 @@ class SongListIntegrationTest < ActionDispatch::IntegrationTest
   test "allows updating the songs and team members for a song list" do
     create_song_list
     visit song_lists_path
+    click_link "Open"
     click_link "Edit"
 
     find(".song_list_item[data-song-id=\"#{@second_song.id}\"]").click_link("Remove")
