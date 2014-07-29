@@ -39,7 +39,6 @@ class Song < ActiveRecord::Base
     scope = scope.select("DISTINCT ON (songs.id) song_lists.done_on, songs.*").order("songs.id, song_lists.done_on DESC")
 
     nulls = order == "asc" ? "NULLS FIRST" : "NULLS LAST"
-    records = connection.execute("SELECT songs.id, songs.name, songs.lyrics, songs.key FROM (#{scope.to_sql}) AS songs ORDER BY done_on #{order} #{nulls}")
-    records.map {|record| Song.new(record)}
+    Song.find_by_sql("SELECT * FROM (#{scope.to_sql}) AS songs ORDER BY done_on #{order} #{nulls}")
   end
 end
