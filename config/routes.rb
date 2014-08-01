@@ -9,5 +9,7 @@ WorshipTeamCenter::Application.routes.draw do
   resources :planned_roster_groups do
     member { post "download_package" }
   end
+
+  resources :availability_groups
   root to: "song_lists#index"
 end

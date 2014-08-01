@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140607075115) do
+ActiveRecord::Schema.define(version: 20140801070304) do
+
+  create_table "availabilities", force: true do |t|
+    t.integer  "availability_group_id"
+    t.date     "date"
+    t.string   "service"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "availabilities", ["availability_group_id"], name: "index_availabilities_on_availability_group_id", using: :btree
+
+  create_table "availability_groups", force: true do |t|
+    t.date     "month"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "planned_roster_groups", force: true do |t|
     t.date     "month"

@@ -3,7 +3,7 @@ R = React.DOM
 WorshipTeamCenter.MonthSelect = React.createClass
   displayName: "MonthSelect"
 
-  getInitialState: -> { month: moment(@props.timestamp).month() + 1, year: moment(@props.timestamp).year() }
+  getInitialState: -> { month: moment(@props.timestamp).month() + 1, year: moment(@props.timestamp).year(), name: @props.name || "[planned_roster_group][month]" }
 
   getMonth: ->
     year = @refs.year.getDOMNode().value
@@ -38,4 +38,4 @@ WorshipTeamCenter.MonthSelect = React.createClass
         R.option {value: "2018"} , "2018"
         R.option {value: "2019"} , "2019"
 
-      R.input {name: "[planned_roster_group][month]", value: "#{@state.year}-#{@state.month}-01", className: "hidden", readOnly: true}
+      R.input {name: @state.name, value: "#{@state.year}-#{@state.month}-01", className: "hidden", readOnly: true}

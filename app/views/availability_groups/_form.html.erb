@@ -1,0 +1,7 @@
+<%= @availability_group.errors.full_messages if @availability_group.errors.present? %>
+
+<%= form_for @availability_group do |f| %>
+  <div id="availability_group"></div>
+
+  <%= f.submit "Save", class: "btn btn-primary btn-large" %>
+<% end %>
