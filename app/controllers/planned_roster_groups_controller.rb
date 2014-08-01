@@ -56,6 +56,10 @@ class PlannedRosterGroupsController < ApplicationController
     false
   end
 
+  def planned_roster_group_params
+    params.require(:planned_roster_group).permit(:month)
+  end
+
   def sundays_in_month(date)
     days = (date.beginning_of_month..date.end_of_month).to_a
     days.select(&:sunday?)
