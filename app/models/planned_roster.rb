@@ -8,30 +8,37 @@ class PlannedRoster < ActiveRecord::Base
   end
 
   def leader(type = :morning)
+    return "?" unless team
     team[type][:leader].presence || "?"
   end
 
   def keyboard(type = :morning)
+    return "?" unless team
     team[type][:keyboard].presence || "?"
   end
 
   def powerpoint(type = :morning)
+    return "?" unless team
     team[type][:powerpoint].presence || "?"
   end
 
   def guitar(type = :morning)
+    return "?" unless team
     team[type][:guitar].presence || "?"
   end
 
   def bass(type = :morning)
+    return "?" unless team
     team[type][:bass].presence || "?"
   end
 
   def drums(type = :morning)
+    return "?" unless team
     team[type][:drums].presence || "?"
   end
 
   def singing(type = :morning)
+    return "?" unless team
     team[type][:singing].presence || "?"
   end
 
