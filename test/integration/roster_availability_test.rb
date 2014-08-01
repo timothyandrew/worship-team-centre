@@ -44,7 +44,6 @@ class RosterAvailabilityTest < ActionDispatch::IntegrationTest
 
     click_button "Continue"
 
-    assert page.has_content? "07 October\nMorning\nAvailable: None"
     assert page.has_content? "14 October\nMorning\nAvailable: Bill, Bob"
     assert page.has_content? "21 October\nMorning\nAvailable: Bill"
     assert page.has_content? "28 October\nMorning\nAvailable: Bob"
