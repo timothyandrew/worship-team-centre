@@ -34,4 +34,11 @@ class PlannedRoster < ActiveRecord::Base
   def singing(type = :morning)
     team[type][:singing].presence || "?"
   end
+
+  def available_users
+    {
+      morning: User.joins(availability_groups: :availabilities).where(availabilities: {service: "Morning"}).where(availabilities: {date: self.date}),
+      evening: User.joins(availability_groups: :availabilities).where(availabilities: {service: "Evening"}).where(availabilities: {date: self.date})
+    }
+  end
 end

@@ -5,6 +5,7 @@ class PlannedRosterGroupsController < ApplicationController
 
   def edit
     @planned_roster_group = PlannedRosterGroup.find(params[:id]).decorate
+    @planned_roster_group.planned_rosters = sundays_in_month(@planned_roster_group.month).map { |sunday| PlannedRoster.new(date: sunday) }
   end
 
   def show
@@ -45,7 +46,6 @@ class PlannedRosterGroupsController < ApplicationController
 
   def update_roster_group_with_rosters
     PlannedRosterGroup.transaction do
-      Rails.logger.fatal planned_roster_group_params
       @planned_roster_group.update_attributes!(planned_roster_group_params)
       @planned_roster_group.planned_rosters.destroy_all
       params[:planned_rosters].each do |i, pr|
@@ -59,5 +59,10 @@ class PlannedRosterGroupsController < ApplicationController
 
   def planned_roster_group_params
     params.require(:planned_roster_group).permit(:month)
+  end
+
+  def sundays_in_month(date)
+    days = (date.beginning_of_month..date.end_of_month).to_a
+    days.select(&:sunday?)
   end
 end

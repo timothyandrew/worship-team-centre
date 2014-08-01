@@ -8,6 +8,12 @@ WorshipTeamCenter.PlannedRoster = React.createClass
       R.h1 {}, moment(@props.date).format("DD MMMM")
 
       R.h2 {}, "Morning"
+      R.h4 {},
+        R.span {}, "Available: "
+        if _.isEmpty(@props.available_users.morning)
+          R.span {}, "None"
+        else
+          R.span {}, _.map(@props.available_users.morning, (user)-> user.name).join(", ")
 
       WorshipTeamCenter.PlannedRosterItem(type: "morning", role: "leader", value: (@props.team && @props.team.morning.leader), i: @props.i)
       WorshipTeamCenter.PlannedRosterItem(type: "morning", role: "keyboard", value: (@props.team && @props.team.morning.keyboard), i: @props.i)
@@ -17,8 +23,13 @@ WorshipTeamCenter.PlannedRoster = React.createClass
       WorshipTeamCenter.PlannedRosterItem(type: "morning", role: "drums", value: (@props.team && @props.team.morning.drums), i: @props.i)
       WorshipTeamCenter.PlannedRosterItem(type: "morning", role: "singing", value: (@props.team && @props.team.morning.singing), i: @props.i)
 
-
       R.h2 {}, "Evening"
+      R.h4 {},
+        R.span {}, "Available: "
+        if _.isEmpty(@props.available_users.evening)
+          R.span {}, "None"
+        else
+          R.span {}, _.map(@props.available_users.evening, (user)-> user.name).join(",")
 
       WorshipTeamCenter.PlannedRosterItem(type: "evening", role: "leader", value: (@props.team && @props.team.evening.leader), i: @props.i)
       WorshipTeamCenter.PlannedRosterItem(type: "evening", role: "keyboard", value: (@props.team && @props.team.evening.keyboard), i: @props.i)

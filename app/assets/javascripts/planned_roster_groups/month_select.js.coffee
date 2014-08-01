@@ -30,7 +30,7 @@ WorshipTeamCenter.MonthSelect = React.createClass
         R.option {value: "11"}, "November"
         R.option {value: "12"}, "December"
 
-      R.select {id: "planned_roster_group_month_1i", onChange: @handleMonthChange, ref: "year", value: @state.month},
+      R.select {id: "planned_roster_group_month_1i", onChange: @handleMonthChange, ref: "year", value: @state.year},
         R.option {value: "2014"}, "2014"
         R.option {value: "2015"} , "2015"
         R.option {value: "2016"} , "2016"
