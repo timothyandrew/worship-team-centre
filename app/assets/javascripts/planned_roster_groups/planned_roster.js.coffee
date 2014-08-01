@@ -10,7 +10,7 @@ WorshipTeamCenter.PlannedRoster = React.createClass
       R.h2 {}, "Morning"
       R.h4 {},
         R.span {}, "Available: "
-        if _.isEmpty(@props.available_users.morning)
+        if !@props.available_users || _.isEmpty(@props.available_users.morning)
           R.span {}, "None"
         else
           R.span {}, _.map(@props.available_users.morning, (user)-> user.name).join(", ")
@@ -26,7 +26,7 @@ WorshipTeamCenter.PlannedRoster = React.createClass
       R.h2 {}, "Evening"
       R.h4 {},
         R.span {}, "Available: "
-        if _.isEmpty(@props.available_users.evening)
+        if !@props.available_users || _.isEmpty(@props.available_users.evening)
           R.span {}, "None"
         else
           R.span {}, _.map(@props.available_users.evening, (user)-> user.name).join(", ")
