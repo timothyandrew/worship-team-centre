@@ -5,7 +5,9 @@ class PlannedRosterGroupsController < ApplicationController
 
   def edit
     @planned_roster_group = PlannedRosterGroup.find(params[:id]).decorate
-    @planned_roster_group.planned_rosters = sundays_in_month(@planned_roster_group.month).map { |sunday| PlannedRoster.new(date: sunday) }
+    if @planned_roster_group.planned_rosters.empty?
+      @planned_roster_group.planned_rosters = sundays_in_month(@planned_roster_group.month).map { |sunday| PlannedRoster.new(date: sunday) }
+    end
   end
 
   def show
