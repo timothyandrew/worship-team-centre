@@ -11,5 +11,6 @@ WorshipTeamCenter::Application.routes.draw do
   end
 
   resources :availability_groups
+  resources :availability_summaries
   root to: "song_lists#index"
 end

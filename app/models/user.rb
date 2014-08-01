@@ -10,4 +10,12 @@ class User < ActiveRecord::Base
   def all_song_lists_a_part_of
     (song_lists + leaderships).uniq
   end
+
+  def first_name
+    self.name.split.first
+  end
+
+  def is_available?(date, service)
+    Availability.joins(:availability_group).exists?(date: date, service: service, availability_groups: {user_id: self.id})
+  end
 end

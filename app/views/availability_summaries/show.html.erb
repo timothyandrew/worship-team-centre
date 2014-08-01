@@ -1,0 +1,21 @@
+<h1>Availability for <%= @sundays.first.strftime("%B") %></h1>
+
+<table class="table table-responsive table-bordered table-hover">
+  <tr>
+    <th></th>
+    <% @sundays.each do |date| %>
+      <th><%= date.strftime("%d %B") %> Morning</th>
+      <th><%= date.strftime("%d %B") %> Evening</th>
+    <% end %>
+  </tr>
+
+  <% User.all.decorate.each do |user| %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <% @sundays.each do |date| %>
+        <td class="availability-icon"><%= user.availability_icon(date, "Morning") %></th>
+        <td class="availability-icon"><%= user.availability_icon(date, "Evening") %></th>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

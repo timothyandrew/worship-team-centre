@@ -1,0 +1,17 @@
+<div class="availability-summary-header">
+  <h1>Availability Summary</h1>
+  <%= link_to "Give Your Availability", new_availability_group_path, class: "btn btn-warning pull-right" %>
+</div>
+
+<table class="table table-striped table-hover table-bordered table-responsive">
+  <tr>
+    <th>Month</th>
+  </tr>
+  <% @months.each do |month| %>
+    <tr>
+      <td>
+        <%= link_to month.strftime("%B %Y"), availability_summary_path(month) %>
+      </td>
+    </tr>
+  <% end %>
+</table>

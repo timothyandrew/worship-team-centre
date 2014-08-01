@@ -1,5 +1,5 @@
 class AvailabilityGroup < ActiveRecord::Base
-  has_many :availabilities
+  has_many :availabilities, dependent: :destroy
   belongs_to :user
 
   validates_uniqueness_of :month, scope: :user_id
