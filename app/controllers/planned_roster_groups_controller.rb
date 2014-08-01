@@ -5,9 +5,6 @@ class PlannedRosterGroupsController < ApplicationController
 
   def edit
     @planned_roster_group = PlannedRosterGroup.find(params[:id]).decorate
-    if @planned_roster_group.planned_rosters.empty?
-      @planned_roster_group.planned_rosters = sundays_in_month(@planned_roster_group.month).map { |sunday| PlannedRoster.new(date: sunday) }
-    end
   end
 
   def show
@@ -16,6 +13,7 @@ class PlannedRosterGroupsController < ApplicationController
 
   def create
     @planned_roster_group = PlannedRosterGroup.new(planned_roster_group_params)
+    @planned_roster_group.planned_rosters = sundays_in_month(@planned_roster_group.month).map { |sunday| PlannedRoster.new(date: sunday) }
     if @planned_roster_group.save
       track_event("Created roster.", {roster: @planned_roster_group.planned_rosters.pluck(:team)})
       redirect_to edit_planned_roster_group_path(@planned_roster_group)
