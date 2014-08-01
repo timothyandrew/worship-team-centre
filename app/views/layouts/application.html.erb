@@ -12,35 +12,7 @@
 
 
 
-<div class="nav-collapse.collapse">
-  <div class="navbar">
-    <div class="navbar-inner">
-      <a class="brand" href="/">WTC</a>
-      <div class="nav-collapse collapse navbar-responsive-collapse">
-        <ul class="nav">
-          <% if user_signed_in? %>
-            <li><%= link_to "New Worship Set", new_song_list_path %></li>
-            <li><%= link_to "Add Song", new_song_path %></li>
-            <li><%= link_to "All Worship Sets", song_lists_path %></li>
-            <li><%= link_to "All Songs", songs_path %></li>
-            <li><%= link_to "Roster Planner", planned_roster_groups_path %></li>
-          <% end %>
-        </ul>
-
-        <ul class="nav right">
-          <% if user_signed_in? %>
-            <li><%= link_to "Signed in as #{current_user.name}", edit_user_registration_path(current_user) %></li>
-            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Sign In", new_session_path(resource_name) %></li>
-            <li><%= link_to "Register", new_user_registration_path %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
+<%= render partial: 'layouts/navbar' %>
 <%= render partial: "layouts/flash" %>
 
 <div class="container <%= yield :container_class %>">
