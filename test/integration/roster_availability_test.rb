@@ -9,6 +9,7 @@ class RosterAvailabilityTest < ActionDispatch::IntegrationTest
   end
 
   test "show available users while creating a roster" do
+    click_link "Availability"
     click_link "Give Your Availability"
 
     select "October", from: "planned_roster_group_month_2i"
@@ -25,6 +26,7 @@ class RosterAvailabilityTest < ActionDispatch::IntegrationTest
     logout
     login(@second_user)
 
+    click_link "Availability"
     click_link "Give Your Availability"
 
     select "October", from: "planned_roster_group_month_2i"
