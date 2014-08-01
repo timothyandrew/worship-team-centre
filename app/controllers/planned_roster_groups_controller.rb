@@ -46,7 +46,6 @@ class PlannedRosterGroupsController < ApplicationController
 
   def update_roster_group_with_rosters
     PlannedRosterGroup.transaction do
-      @planned_roster_group.update_attributes!(planned_roster_group_params)
       @planned_roster_group.planned_rosters.destroy_all
       params[:planned_rosters].each do |i, pr|
         PlannedRoster.create!(team: pr[:team], date: pr[:date], planned_roster_group: @planned_roster_group)
@@ -55,10 +54,6 @@ class PlannedRosterGroupsController < ApplicationController
     end
   rescue ActiveRecord::RecordInvalid
     false
-  end
-
-  def planned_roster_group_params
-    params.require(:planned_roster_group).permit(:month)
   end
 
   def sundays_in_month(date)

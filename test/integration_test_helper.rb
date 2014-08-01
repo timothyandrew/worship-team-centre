@@ -27,6 +27,10 @@ class ActionDispatch::IntegrationTest
     click_button("Sign in")
   end
 
+  def logout
+    Capybara.reset_sessions!
+  end
+
   def select_from_chosen(item_text, options)
     field = find_field(options[:from], visible: false)
     option_value = page.evaluate_script("$(\"##{field[:id]} option:contains('#{item_text}')\").val()")

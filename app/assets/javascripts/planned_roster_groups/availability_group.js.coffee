@@ -34,13 +34,13 @@ WorshipTeamCenter.AvailabilityGroup = React.createClass
           R.th {}, "Are You Available?"
         _.map @state.availabilities, (availability, i) ->
           R.tbody {},
-            R.tr {},
+            R.tr {className: "availability-row"},
               R.td {}, moment(availability.date).format("Do MMM YYYY")
               R.td {}, "Morning"
               R.td {},
                 R.input {type: "checkbox", name: "[availabilities][#{i}][morning][#{moment(availability.date).format("YYYY-MM-DD")}]"}
 
-            R.tr {},
+            R.tr {className: "availability-row"},
               R.td {}, moment(availability.date).format("Do MMM YYYY")
               R.td {}, "Evening"
               R.td {},

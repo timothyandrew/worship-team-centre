@@ -29,7 +29,7 @@ WorshipTeamCenter.PlannedRoster = React.createClass
         if _.isEmpty(@props.available_users.evening)
           R.span {}, "None"
         else
-          R.span {}, _.map(@props.available_users.evening, (user)-> user.name).join(",")
+          R.span {}, _.map(@props.available_users.evening, (user)-> user.name).join(", ")
 
       WorshipTeamCenter.PlannedRosterItem(type: "evening", role: "leader", value: (@props.team && @props.team.evening.leader), i: @props.i)
       WorshipTeamCenter.PlannedRosterItem(type: "evening", role: "keyboard", value: (@props.team && @props.team.evening.keyboard), i: @props.i)
