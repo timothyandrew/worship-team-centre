@@ -2,6 +2,8 @@ class PlannedRoster < ActiveRecord::Base
   serialize :team
   belongs_to :planned_roster_group, foreign_key: :group_id
 
+  scope :chronological_order, -> {order(:date)}
+
   def generate_image
     service = RosterDrawService.new(self)
     service.generate_image
