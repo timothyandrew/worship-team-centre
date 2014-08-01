@@ -1,10 +1,10 @@
 class PlannedRosterGroupsController < ApplicationController
   def new
-    @planned_roster_group = PlannedRosterGroup.new(month: Date.today)
+    @planned_roster_group = PlannedRosterGroup.new(month: Date.today).decorate
   end
 
   def edit
-    @planned_roster_group = PlannedRosterGroup.find(params[:id])
+    @planned_roster_group = PlannedRosterGroup.find(params[:id]).decorate
   end
 
   def show
@@ -13,9 +13,9 @@ class PlannedRosterGroupsController < ApplicationController
 
   def create
     @planned_roster_group = PlannedRosterGroup.new(planned_roster_group_params)
-    if create_roster_group_with_rosters
+    if @planned_roster_group.save
       track_event("Created roster.", {roster: @planned_roster_group.planned_rosters.pluck(:team)})
-      redirect_to planned_roster_group_path(@planned_roster_group)
+      redirect_to edit_planned_roster_group_path(@planned_roster_group)
     else
       render :new
     end
@@ -42,19 +42,6 @@ class PlannedRosterGroupsController < ApplicationController
   end
 
   private
-
-  def create_roster_group_with_rosters
-    PlannedRosterGroup.transaction do
-      @planned_roster_group.save!
-      @planned_roster_group.planned_rosters.destroy_all
-      params[:planned_rosters].each do |i, pr|
-        PlannedRoster.create!(team: pr[:team], date: pr[:date], planned_roster_group: @planned_roster_group)
-      end
-      @planned_roster_group
-    end
-  rescue ActiveRecord::RecordInvalid
-    false
-  end
 
   def update_roster_group_with_rosters
     PlannedRosterGroup.transaction do

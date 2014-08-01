@@ -16,10 +16,10 @@ WorshipTeamCenter.PlannedRosterGroups = React.createClass
     @setState(rosters: rosters)
 
   sundaysInMonth: ->
-    year = @refs.month.getMonth().year()
-    month = @refs.month.getMonth().month() + 1
+    year = moment(@props.month).year()
+    month = moment(@props.month).month() + 1
     sundays = []
-    for i in [1..@refs.month.getMonth().daysInMonth()]
+    for i in [1..moment(@props.month).daysInMonth()]
       day = moment("#{year}-#{month}-#{i}")
       if day.format("ddd") == "Sun"
         sundays.push day
@@ -27,6 +27,5 @@ WorshipTeamCenter.PlannedRosterGroups = React.createClass
 
   render: ->
     R.div {},
-      WorshipTeamCenter.MonthSelect({onMonthChange: @updateRosters, ref: "month", timestamp: @props.month})
       _.map @state.rosters, (roster, i) ->
         WorshipTeamCenter.PlannedRoster(_.extend(roster, {i: i}))
