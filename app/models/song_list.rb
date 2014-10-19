@@ -22,7 +22,7 @@ class SongList < ActiveRecord::Base
   end
 
   def users_not_in_team
-    User.all - team_members
+    User.all.order(:name) - team_members
   end
 
   def update_clearing_song_list_items_and_team_members(params)
